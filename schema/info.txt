@@ -1,0 +1,4 @@
+there might be different type of portfolie like project, product, or short work , rnd
+Requrement analysis = user stories 
+
+user stories will be planned in the sprint planning
