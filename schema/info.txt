@@ -2,3 +2,25 @@ there might be different type of portfolie like project, product, or short work 
 Requrement analysis = user stories 
 
 user stories will be planned in the sprint planning
+---------------------------
+taskflow
+id 
+title
+Details:
+    tasktype (from from taskstype)
+    --labels( use seperate tables)
+    status (open, closes, )
+    progress (, resolved, etc)
+description
+urlLInks (github, svn, etc)
+attachements (multi-blobs)
+assignTo (resouce id from active team)
+
+task chaining (doc;notes)
+using task chaining we can break a bigger task into two or more and chain them with each other
+----------------
+TODO:
+make a form that read the table, create the model, 
+and generate dynamically form based on information stored in the table
+we can use dictionary table for such things
+
