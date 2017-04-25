@@ -2,11 +2,9 @@
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
 #   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
-#
-# Also note: You'll have to insert the output of 'django-admin sqlcustom [app_label]'
-# into your database.
 from __future__ import unicode_literals
 
 from django.db import models
@@ -21,14 +19,12 @@ class Dictionary(models.Model):
     class Meta:
         managed = False
         db_table = 'Dictionary'
-    def __str__(self):
-        return self.longtitle
 
 
 class Portfolilables(models.Model):
     portfolilablesid = models.AutoField(db_column='portFoliLablesid', primary_key=True)  # Field name made lowercase.
     label = models.CharField(max_length=100, blank=True, null=True)
-    portfolioid = models.ForeignKey('Portfolio', db_column='portfolioid')
+    portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
 
     class Meta:
         managed = False
@@ -37,8 +33,8 @@ class Portfolilables(models.Model):
 
 class Portfolilinks(models.Model):
     portfolilinksid = models.AutoField(db_column='portFoliLinksid', primary_key=True)  # Field name made lowercase.
-    portfolilinkslabelid = models.ForeignKey('Portfolilinkslabel', db_column='portFoliLinksLabelid')  # Field name made lowercase.
-    portfolioid = models.ForeignKey('Portfolio', db_column='portfolioid')
+    portfolilinkslabelid = models.ForeignKey('Portfolilinkslabel', models.DO_NOTHING, db_column='portFoliLinksLabelid')  # Field name made lowercase.
+    portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
 
     class Meta:
         managed = False
@@ -58,14 +54,36 @@ class Portfolilinkslabel(models.Model):
 class Portfolio(models.Model):
     portfolioid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    portfoliotypeid = models.ForeignKey('Portfoliotype', db_column='portfolioTypeid')  # Field name made lowercase.
-    owner = models.ForeignKey('Resource', db_column='owner')
-    teamid = models.ForeignKey('Team', db_column='teamid')
+    portfoliotypeid = models.ForeignKey('Portfoliotype', models.DO_NOTHING, db_column='portfolioTypeid')  # Field name made lowercase.
+    owner = models.ForeignKey('Resource', models.DO_NOTHING, db_column='owner')
+    teamid = models.ForeignKey('Team', models.DO_NOTHING, db_column='teamid')
     details = models.TextField(blank=True, null=True)
+    portfoliostatusid = models.ForeignKey('Portfoliostatus', models.DO_NOTHING, db_column='PortfolioStatusid')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'Portfolio'
+
+
+class Portfoliolinks(models.Model):
+    portfolilinksid = models.AutoField(db_column='portFoliLinksid', primary_key=True)  # Field name made lowercase.
+    portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
+    portfolilinkslabelid = models.ForeignKey(Portfolilinkslabel, models.DO_NOTHING, db_column='portFoliLinksLabelid')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'PortfolioLInks'
+
+
+class Portfoliostatus(models.Model):
+    portfoliostatusid = models.AutoField(db_column='PortfolioStatusid', primary_key=True)  # Field name made lowercase.
+    title = models.CharField(db_column='Title', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    def __str__(self):
+        return  str(self.portfoliostatusid) + ' '+ self.title  
+    class Meta:
+        managed = False
+        db_table = 'PortfolioStatus'
 
 
 class Portfoliotype(models.Model):
@@ -89,7 +107,7 @@ class Progressratio(models.Model):
 class Resource(models.Model):
     resourceid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    resourcetypeid = models.ForeignKey('Resourcetype', db_column='ResourceTypeid')  # Field name made lowercase.
+    resourcetypeid = models.ForeignKey('Resourcetype', models.DO_NOTHING, db_column='ResourceTypeid')  # Field name made lowercase.
     active = models.IntegerField()
 
     class Meta:
@@ -107,15 +125,15 @@ class Resourcetype(models.Model):
 
 
 class Task(models.Model):
-    taskid = models.BigIntegerField(primary_key=True)
-    userstoryid = models.ForeignKey('Userstory', db_column='userStoryid', blank=True, null=True)  # Field name made lowercase.
-    resourceid = models.ForeignKey('Teamresource', db_column='Resourceid', blank=True, null=True)  # Field name made lowercase.
+    taskid = models.BigAutoField(primary_key=True)
+    userstoryid = models.ForeignKey('Userstory', models.DO_NOTHING, db_column='userStoryid', blank=True, null=True)  # Field name made lowercase.
+    resourceid = models.ForeignKey('Teamresource', models.DO_NOTHING, db_column='Resourceid', blank=True, null=True)  # Field name made lowercase.
     estmatedstart = models.DateField(db_column='estmatedStart', blank=True, null=True)  # Field name made lowercase.
     estimatedduration = models.IntegerField(db_column='estimatedDuration', blank=True, null=True)  # Field name made lowercase.
     actualstart = models.DateField(db_column='actualStart', blank=True, null=True)  # Field name made lowercase.
     actualduration = models.IntegerField(db_column='actualDuration', blank=True, null=True)  # Field name made lowercase.
-    taskstatusid = models.ForeignKey('Taskstatus', db_column='taskStatusid', blank=True, null=True)  # Field name made lowercase.
-    progressratioid = models.ForeignKey(Progressratio, db_column='progressRatioid')  # Field name made lowercase.
+    taskstatusid = models.ForeignKey('Taskstatus', models.DO_NOTHING, db_column='taskStatusid', blank=True, null=True)  # Field name made lowercase.
+    progressratioid = models.ForeignKey(Progressratio, models.DO_NOTHING, db_column='progressRatioid')  # Field name made lowercase.
     nexttaskid = models.BigIntegerField(db_column='nextTaskId', blank=True, null=True)  # Field name made lowercase.
     previoustaskid = models.BigIntegerField(db_column='previousTaskId', blank=True, null=True)  # Field name made lowercase.
 
@@ -152,8 +170,8 @@ class Team(models.Model):
 
 
 class Teamresource(models.Model):
-    resourceid = models.ForeignKey(Resource, db_column='resourceid')
-    teamid = models.ForeignKey(Team, db_column='teamid')
+    resourceid = models.ForeignKey(Resource, models.DO_NOTHING, db_column='resourceid', primary_key=True)
+    teamid = models.ForeignKey(Team, models.DO_NOTHING, db_column='teamid', primary_key=True)
 
     class Meta:
         managed = False
@@ -163,9 +181,10 @@ class Teamresource(models.Model):
 
 class Userstory(models.Model):
     userstoryid = models.AutoField(db_column='userStoryid', primary_key=True)  # Field name made lowercase.
-    portfolioid = models.ForeignKey(Portfolio, db_column='portfolioid')
     details = models.CharField(max_length=100, blank=True, null=True)
-    userresourceid = models.ForeignKey(Resource, db_column='userResourceid')  # Field name made lowercase.
+    userresourceid = models.ForeignKey(Resource, models.DO_NOTHING, db_column='userResourceid')  # Field name made lowercase.
+    portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
+    releaseid = models.ForeignKey('Portfolireleases', models.DO_NOTHING, db_column='releaseId')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -177,129 +196,31 @@ class Worklog(models.Model):
     starttime = models.CharField(db_column='startTime', max_length=100, blank=True, null=True)  # Field name made lowercase.
     endtime = models.CharField(db_column='endTime', max_length=100, blank=True, null=True)  # Field name made lowercase.
     duration = models.CharField(db_column='Duration', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    taskid = models.ForeignKey(Task, db_column='taskid')
+    taskid = models.ForeignKey(Task, models.DO_NOTHING, db_column='taskid')
 
     class Meta:
         managed = False
         db_table = 'WorkLog'
 
 
-class AuthGroup(models.Model):
-    name = models.CharField(unique=True, max_length=80)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group'
-
-
-class AuthGroupPermissions(models.Model):
-    group = models.ForeignKey(AuthGroup)
-    permission = models.ForeignKey('AuthPermission')
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group_permissions'
-        unique_together = (('group', 'permission'),)
-
-
-class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType')
-    codename = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_permission'
-        unique_together = (('content_type', 'codename'),)
-
-
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.IntegerField()
-    username = models.CharField(unique=True, max_length=30)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email = models.CharField(max_length=254)
-    is_staff = models.IntegerField()
-    is_active = models.IntegerField()
-    date_joined = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user'
-
-
-class AuthUserGroups(models.Model):
-    user = models.ForeignKey(AuthUser)
-    group = models.ForeignKey(AuthGroup)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_groups'
-        unique_together = (('user', 'group'),)
-
-
-class AuthUserUserPermissions(models.Model):
-    user = models.ForeignKey(AuthUser)
-    permission = models.ForeignKey(AuthPermission)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_user_permissions'
-        unique_together = (('user', 'permission'),)
-
-
-class DjangoAdminLog(models.Model):
-    action_time = models.DateTimeField()
-    object_id = models.TextField(blank=True, null=True)
-    object_repr = models.CharField(max_length=200)
-    action_flag = models.SmallIntegerField()
-    change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', blank=True, null=True)
-    user = models.ForeignKey(AuthUser)
-
-    class Meta:
-        managed = False
-        db_table = 'django_admin_log'
-
-
-class DjangoContentType(models.Model):
-    app_label = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'django_content_type'
-        unique_together = (('app_label', 'model'),)
-
-
-class DjangoMigrations(models.Model):
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_migrations'
-
-
-class DjangoSession(models.Model):
-    session_key = models.CharField(primary_key=True, max_length=40)
-    session_data = models.TextField()
-    expire_date = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_session'
-
-
 class Externallinks(models.Model):
     externallinksid = models.AutoField(db_column='externalLInksid', primary_key=True)  # Field name made lowercase.
     url = models.CharField(max_length=100, blank=True, null=True)
-    taskid = models.ForeignKey(Task, db_column='taskid')
-    linkslabelid = models.ForeignKey(Tasklinkslabel, db_column='linksLabelid')  # Field name made lowercase.
+    taskid = models.ForeignKey(Task, models.DO_NOTHING, db_column='taskid')
+    linkslabelid = models.ForeignKey(Tasklinkslabel, models.DO_NOTHING, db_column='linksLabelid')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'externalLInks'
+
+
+class Portfolireleases(models.Model):
+    portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
+    releaseid = models.IntegerField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
+    plandate = models.DateField(db_column='planDate', blank=True, null=True)  # Field name made lowercase.
+    actualdate = models.DateField(db_column='actualDate', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'portfoliReleases'
+        unique_together = (('releaseid', 'portfolioid'),)
