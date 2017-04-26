@@ -58,22 +58,12 @@ class Portfolio(models.Model):
     owner = models.ForeignKey('Resource', models.DO_NOTHING, db_column='owner')
     teamid = models.ForeignKey('Team', models.DO_NOTHING, db_column='teamid')
     details = models.TextField(blank=True, null=True)
+    rank    = models.IntegerField(db_column='rank', default=1, null=False)
     portfoliostatusid = models.ForeignKey('Portfoliostatus', models.DO_NOTHING, db_column='PortfolioStatusid')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'Portfolio'
-
-
-class Portfoliolinks(models.Model):
-    portfolilinksid = models.AutoField(db_column='portFoliLinksid', primary_key=True)  # Field name made lowercase.
-    portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
-    portfolilinkslabelid = models.ForeignKey(Portfolilinkslabel, models.DO_NOTHING, db_column='portFoliLinksLabelid')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'PortfolioLInks'
-
 
 class Portfoliostatus(models.Model):
     portfoliostatusid = models.AutoField(db_column='PortfolioStatusid', primary_key=True)  # Field name made lowercase.
