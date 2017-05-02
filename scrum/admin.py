@@ -1,17 +1,17 @@
 from django.contrib import admin
 
-from .models import Portfoliostatus
-from .models import Portfoliotype
-from .models import Resourcetype
+from .models import PortfolioStatus
+from .models import PortfolioType
+from .models import ResourceType
 from .models import Resource
 from .models import Team
 from .models import TeamResource
-from .models import Portfolio
+#from .models import Portfolio
 
-admin.site.register(Portfoliostatus)
-admin.site.register(Portfoliotype)
-admin.site.register(Resourcetype)
+admin.site.register(PortfolioStatus)
+admin.site.register(PortfolioType)
+admin.site.register(ResourceType)
 admin.site.register(Resource)
 admin.site.register(Team)
 admin.site.register(TeamResource)
-admin.site.register(Portfolio)
+#admin.site.register(Portfolio)

@@ -21,34 +21,34 @@ class Dictionary(models.Model):
         db_table = 'Dictionary'
 
 
-class Portfolilables(models.Model):
-    portfolilablesid = models.AutoField(db_column='portFoliLablesid', primary_key=True)  # Field name made lowercase.
+class Portfoliolables(models.Model):
+    portfoliolablesid = models.AutoField(db_column='portfolioLablesid', primary_key=True)  # Field name made lowercase.
     label = models.CharField(max_length=100, blank=True, null=True)
     portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
 
     class Meta:
         managed = False
-        db_table = 'PortFoliLables'
+        db_table = 'PortfoliLables'
 
 
-class Portfolilinks(models.Model):
-    portfolilinksid = models.AutoField(db_column='portFoliLinksid', primary_key=True)  # Field name made lowercase.
-    portfolilinkslabelid = models.ForeignKey('Portfolilinkslabel', models.DO_NOTHING, db_column='portFoliLinksLabelid')  # Field name made lowercase.
+class PortfolioLinks(models.Model):
+    portfolioLinksid = models.AutoField(db_column='portfolioLinksid', primary_key=True)  # Field name made lowercase.
+    portfolioLinksLabelid = models.ForeignKey('PortfolioLinksLabel', models.DO_NOTHING, db_column='portfoliolinkslabelid')  # Field name made lowercase.
     portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
 
     class Meta:
         managed = False
-        db_table = 'PortFoliLinks'
+        db_table = 'PortfolioLinks'
 
 
-class Portfolilinkslabel(models.Model):
-    portfolilinkslabelid = models.AutoField(db_column='portFoliLinksLabelid', primary_key=True)  # Field name made lowercase.
+class PortfolioLinksLabel(models.Model):
+    portfolioLinkslabelid = models.AutoField(db_column='portfoliolinkslabelid', primary_key=True)  # Field name made lowercase.
     label = models.CharField(max_length=100, blank=True, null=True)
     url = models.CharField(db_column='Url', max_length=100, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'PortFoliLinksLabel'
+        db_table = 'portfoliolinkslabelid'
 
 
 class Portfolio(models.Model):
@@ -56,16 +56,15 @@ class Portfolio(models.Model):
     title = models.CharField(max_length=100)
     portfoliotypeid = models.ForeignKey('Portfoliotype', models.DO_NOTHING, db_column='portfolioTypeid')  # Field name made lowercase.
     owner = models.ForeignKey('Resource', models.DO_NOTHING, db_column='owner')
-    teamid = models.ForeignKey('Team', models.DO_NOTHING, db_column='teamid')
     details = models.TextField(blank=True, null=True)
     rank    = models.IntegerField(db_column='rank', default=1, null=False)
-    portfoliostatusid = models.ForeignKey('Portfoliostatus', models.DO_NOTHING, db_column='PortfolioStatusid')  # Field name made lowercase.
+    portfoliostatusid = models.ForeignKey('PortfolioStatus', models.DO_NOTHING, db_column='PortfolioStatusid')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'Portfolio'
 
-class Portfoliostatus(models.Model):
+class PortfolioStatus(models.Model):
     portfoliostatusid = models.AutoField(db_column='PortfolioStatusid', primary_key=True)  # Field name made lowercase.
     title = models.CharField(db_column='Title', max_length=100, blank=True, null=True)  # Field name made lowercase.
 
@@ -76,16 +75,17 @@ class Portfoliostatus(models.Model):
         db_table = 'PortfolioStatus'
 
 
-class Portfoliotype(models.Model):
+class PortfolioType(models.Model):
     portfoliotypeid = models.AutoField(db_column='portfolioTypeid', primary_key=True)  # Field name made lowercase.
     title = models.CharField(max_length=100)
 
     class Meta:
         managed = False
         db_table = 'PortfolioType'
+    def __str__(self):
+        return  str(self.portfoliotypeid) + ' '+ self.title
 
-
-class Progressratio(models.Model):
+class ProgressRatio(models.Model):
     progressratioid = models.AutoField(db_column='progressRatioid', primary_key=True)  # Field name made lowercase.
     descriptions = models.CharField(max_length=100, blank=True, null=True)
 
@@ -105,7 +105,7 @@ class Resource(models.Model):
         db_table = 'Resource'
 
 
-class Resourcetype(models.Model):
+class ResourceType(models.Model):
     resourcetypeid = models.AutoField(db_column='resourceTypeid', primary_key=True)  # Field name made lowercase.
     description = models.CharField(max_length=100, blank=True, null=True)
 
@@ -123,7 +123,7 @@ class Task(models.Model):
     actualstart = models.DateField(db_column='actualStart', blank=True, null=True)  # Field name made lowercase.
     actualduration = models.IntegerField(db_column='actualDuration', blank=True, null=True)  # Field name made lowercase.
     taskstatusid = models.ForeignKey('Taskstatus', models.DO_NOTHING, db_column='taskStatusid', blank=True, null=True)  # Field name made lowercase.
-    progressratioid = models.ForeignKey(Progressratio, models.DO_NOTHING, db_column='progressRatioid')  # Field name made lowercase.
+    progressratioid = models.ForeignKey(ProgressRatio, models.DO_NOTHING, db_column='progressratioid')  # Field name made lowercase.
     nexttaskid = models.BigIntegerField(db_column='nextTaskId', blank=True, null=True)  # Field name made lowercase.
     previoustaskid = models.BigIntegerField(db_column='previousTaskId', blank=True, null=True)  # Field name made lowercase.
 
@@ -132,16 +132,8 @@ class Task(models.Model):
         db_table = 'Task'
 
 
-class Tasklinkslabel(models.Model):
-    tasklinkslabelid = models.AutoField(db_column='taskLinksLabelid', primary_key=True)  # Field name made lowercase.
-    label = models.CharField(max_length=100, blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'TaskLinksLabel'
-
-
-class Taskstatus(models.Model):
+class TaskStatus(models.Model):
     taskstatusid = models.AutoField(db_column='taskStatusid', primary_key=True)  # Field name made lowercase.
     title = models.CharField(max_length=100, blank=True, null=True)
 
@@ -159,7 +151,7 @@ class Team(models.Model):
         db_table = 'Team'
 
 
-class Teamresource(models.Model):
+class TeamResource(models.Model):
     resourceid = models.ForeignKey(Resource, models.DO_NOTHING, db_column='resourceid', primary_key=True)
     teamid = models.ForeignKey(Team, models.DO_NOTHING, db_column='teamid', primary_key=True)
 
@@ -169,7 +161,7 @@ class Teamresource(models.Model):
         unique_together = (('resourceid', 'teamid'),)
 
 
-class Userstory(models.Model):
+class UserStory(models.Model):
     userstoryid = models.AutoField(db_column='userStoryid', primary_key=True)  # Field name made lowercase.
     details = models.CharField(max_length=100, blank=True, null=True)
     userresourceid = models.ForeignKey(Resource, models.DO_NOTHING, db_column='userResourceid')  # Field name made lowercase.
@@ -181,7 +173,7 @@ class Userstory(models.Model):
         db_table = 'UserStory'
 
 
-class Worklog(models.Model):
+class WorkLog(models.Model):
     worklogid = models.AutoField(db_column='workLogid', primary_key=True)  # Field name made lowercase.
     starttime = models.CharField(db_column='startTime', max_length=100, blank=True, null=True)  # Field name made lowercase.
     endtime = models.CharField(db_column='endTime', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -193,18 +185,26 @@ class Worklog(models.Model):
         db_table = 'WorkLog'
 
 
-class Externallinks(models.Model):
-    externallinksid = models.AutoField(db_column='externalLInksid', primary_key=True)  # Field name made lowercase.
-    url = models.CharField(max_length=100, blank=True, null=True)
+class TaskLinksLabel(models.Model):
+    tasklinkslabelid = models.AutoField(db_column='tasklinkslabelid', primary_key=True)  # Field name made lowercase.
+    label = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tasklinkslabel'
+
+class ExternalLinks(models.Model):
+    externallinksid = models.AutoField(db_column='externallinksid', primary_key=True)  # Field name made lowercase.
+    urltext      = models.CharField(max_length=100, blank=True, null=True)
     taskid = models.ForeignKey(Task, models.DO_NOTHING, db_column='taskid')
-    linkslabelid = models.ForeignKey(Tasklinkslabel, models.DO_NOTHING, db_column='linksLabelid')  # Field name made lowercase.
+    linkslabelid = models.ForeignKey(TaskLinksLabel, models.DO_NOTHING, db_column='tasklinkslabelid')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'externalLInks'
 
 
-class Portfolireleases(models.Model):
+class PortfoliReleases(models.Model):
     portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
     releaseid = models.IntegerField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
     plandate = models.DateField(db_column='planDate', blank=True, null=True)  # Field name made lowercase.

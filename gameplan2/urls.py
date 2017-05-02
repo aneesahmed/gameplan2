@@ -17,6 +17,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^scrum/', include('scrum.urls')),
-    url(r'/',include('scrum.urls')),
+    #url(r'/',include('scrum.urls')),
     url(r'^admin/', admin.site.urls),
 ]
