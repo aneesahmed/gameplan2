@@ -1,10 +1,36 @@
+<div appml-data="projectData.php">
+     <div style="padding:15px"> 
+        <a href="projects.php?openMode=add"  iconCls="icon-view" >New Project</a>
+    </div>
+    <div class="panel col-sm-6 col-lg-3"  appml-repeat="rows">
+        <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+            <h5 class="text-right" >{{projectStatus}} &nbsp; &nbsp;</h5>
+            <h2 class="text-center" >{{project}}</h2>
+        </div>
 
-{% if pflist %}
-    <ul>
-    {% for portfolio in pflist %}
-        <li><a href="/scrum/{{ portfolioid }}/">{{ portfolio.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No portfolio available.</p>
-{% endif %}
+        <ul class="list-group ">
+            <li class="list-group-item list-group-item-success"><strong>Total Tasks</strong>
+                <span class="pull-right">{{totalTasks}}</span>
+            </li>
+            <li class="list-group-item list-group-item-info"><strong>Pending Tasks:</strong>
+                <span class="pull-right">{{PendingsTasks}}</span>
+            </li>
+            <li class="list-group-item list-group-item-warning"><strong>Team:</strong>
+                <span class="pull-right">{{team}}</span>
+            </li>
+            <li class="list-group-item list-group-item-danger"><strong>Project Duration:</strong>
+                <span class="pull-right">{{totalDays}} </span>
+            </li>
+        </ul>
+    
+        <div class="panel-footer"  style="background-color:#{{statusColor}};">
+            <div id="toolbar" class="text-left"  style="color:#FFFFFF">
+                    <a href="projects.php?openMode=edit&projectId={{projectId}}" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF" >Project Details</a>
+                    <a href="tasks.php?projectId={{projectId}}" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF">Tasks</a>
+                    <a href="users.php?projectId={{projectId}}" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF">Project Teams</a>
+                    <a href="taskGanttView.php?projectId={{projectId}}"  target="_blank" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF">Gantt View</a>
+
+          
+         </div>
+ </div>
+</body>
