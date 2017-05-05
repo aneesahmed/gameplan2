@@ -15,13 +15,15 @@ def index(request):
         'pflist': pflist,
     }
     #return HttpResponse(template.render(context, request))
-    return render(request, 'polls/index.html', context)
+    return render(request, 'scrum/index.html', context)
     #output = ', '.join([st.title for st in status])
     #return HttpResponse(output + "ting" + str(statusFilter[0]))
 
-def portfolio(request, portfolioId):
+def portfolio(request):
+    id = 1
+    portfolio = Portfolio
     try:
-        portfolio = Portfolio.objects.get(pk=portfolioId)
+        portfolio = Portfolio.objects.get(pk=id)
     except portfolio.DoesNotExist:
         raise Http404("portfolio does not exist")
     return render(request, 'scrum/portfolio.html', {'portfolio': portfolio})
