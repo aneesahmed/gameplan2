@@ -1,0 +1,105 @@
+{% load static %}     
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'http://getbootstrap.com/favicon.ico' %}">
+
+    <title>Game Plan</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '/scrum/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static '/scrum/bootstrap/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'scrum/bootstrap/css/justified-nav.css" rel="stylesheet' %}">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{% static 'scrum/bootstrap/js/ie-emulation-modes-warning.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'scrum/js/appml.js' %}"></script>
+    
+    
+    <!-- <script src="http://www.w3schools.com/appml/2.0.3/appml.js"></script> -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="bootstrap/js/html5shiv.min.js"></script>
+      <script src="bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="home.php">Game Plan</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="projectDashboard.php">DashBoard</a></li>
+      <li><a href="projects.php">project Details</a></li>
+      <li><a href="tasks.php">Tasks</a></li>
+      <li><a  href="admin">Admin </a><li>
+     
+      
+      <li><a  href="logout.php">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+ <div class="panel col-sm-6 col-lg-3"  appml-repeat="rows">
+        <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+            <h5 class="text-right" >{{projectStatus}} &nbsp; &nbsp;</h5>
+            <h2 class="text-center" >{{project}}</h2>
+        </div>
+
+        <ul class="list-group ">
+            <li class="list-group-item list-group-item-success"><strong>Total Tasks</strong>
+                <span class="pull-right">{{totalTasks}}</span>
+            </li>
+            <li class="list-group-item list-group-item-info"><strong>Pending Tasks:</strong>
+                <span class="pull-right">{{PendingsTasks}}</span>
+            </li>
+            <li class="list-group-item list-group-item-warning"><strong>Team:</strong>
+                <span class="pull-right">{{team}}</span>
+            </li>
+            <li class="list-group-item list-group-item-danger"><strong>Project Duration:</strong>
+                <span class="pull-right">{{totalDays}} </span>
+            </li>
+        </ul>
+         <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+            <h5 class="text-right" >{{projectStatus}} &nbsp; &nbsp;</h5>
+            <h2 class="text-center" >{{project}}</h2>
+        </div>
+
+        <ul class="list-group ">
+            <li class="list-group-item list-group-item-success"><strong>Total Tasks</strong>
+                <span class="pull-right">{{totalTasks}}</span>
+            </li>
+            <li class="list-group-item list-group-item-info"><strong>Pending Tasks:</strong>
+                <span class="pull-right">{{PendingsTasks}}</span>
+            </li>
+            <li class="list-group-item list-group-item-warning"><strong>Team:</strong>
+                <span class="pull-right">{{team}}</span>
+            </li>
+            <li class="list-group-item list-group-item-danger"><strong>Project Duration:</strong>
+                <span class="pull-right">{{totalDays}} </span>
+            </li>
+        </ul>
+
+        <div class="panel-footer"  style="background-color:#{{statusColor}};">
+            <div id="toolbar" class="text-left"  style="color:#FFFFFF">
+                    <a href="projects.php?openMode=edit&projectId={{projectId}}" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF" >Project Details</a>
+                    <a href="tasks.php?projectId={{projectId}}" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF">Tasks</a>
+                    <a href="users.php?projectId={{projectId}}" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF">Project Teams</a>
+                    <a href="taskGanttView.php?projectId={{projectId}}"  target="_blank" class="easyui-linkbutton" iconCls="icon-view" plain="true" style="color:#FFFFFF">Gantt View</a>
+
+          
+         </div>
+</body>

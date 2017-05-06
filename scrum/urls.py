@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^portfolio', views.portfolio, name='portfolio'),
 
     # ex: /portfolio/5/
+    
 ] 
