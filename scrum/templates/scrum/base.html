@@ -83,26 +83,38 @@
     </div>
     <div class="col-sm-8 text-left"> 
         <div class="well">
-            <p>add New {{ Content }}</p>
+          <a href="/scrum/portfolio/add">Add New</a>
+          
         </div>
-        <div class="col-sm-3 text-left">
+
+      {% if pflist %}
+        {% for portfolio in pflist %}
+        <div class="panel col-sm-6 col-lg-3">
+          <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
 
             <ul class="list-group ">
-                <li class="list-group-item list-group-item-success"><strong>Total Tasks</strong>
-                    <span class="pull-right">{{totalTasks}}</span>
+                <li class="list-group-item list-group-item-success"><strong>{{portfolio.title}}</strong>
+                    
                 </li>
-                <li class="list-group-item list-group-item-info"><strong>Pending Tasks:</strong>
-                    <span class="pull-right">{{PendingsTasks}}</span>
+                <li class="list-group-item list-group-item-info"><strong>Type:</strong>
+                    <span class="pull-right">{{portfolio.portfoliotypeid}}</span>
                 </li>
-                <li class="list-group-item list-group-item-warning"><strong>Team:</strong>
-                    <span class="pull-right">{{team}}</span>
+                <li class="list-group-item list-group-item-warning"><strong>Onwer:</strong>
+                    <span class="pull-right">{{portfolio.owner}}</span>
                 </li>
                 <li class="list-group-item list-group-item-danger"><strong>Project Duration:</strong>
                     <span class="pull-right">{{totalDays}} </span>
                 </li>
             </ul>
-
+           </div>
         </div>
+     {% endfor %}
+    {% else %}
+      <div class="well">
+        <p>No portfolio available.</p>
+      </div>
+    {% endif %}
+ 
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">

@@ -19,6 +19,9 @@ def index(request):
     #output = ', '.join([st.title for st in status])
     #return HttpResponse(output + "ting" + str(statusFilter[0]))
 
+def portfolioAdd(request):
+    #return HttpResponse(output)
+    return render(request, 'scrum/newPortfolio.html')    
 def portfolio(request):
     id = 1
     portfolio = Portfolio
