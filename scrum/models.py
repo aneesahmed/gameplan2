@@ -55,7 +55,7 @@ class Portfolio(models.Model):
     portfolioid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     portfoliotypeid = models.ForeignKey('Portfoliotype', models.DO_NOTHING, db_column='portfolioTypeid')  # Field name made lowercase.
-    owner = models.ForeignKey('Resource', models.DO_NOTHING, db_column='owner')
+    owner = models.ForeignKey('Resource', models.DO_NOTHING, db_column='owner' )
     details = models.TextField(blank=True, null=True)
     rank    = models.IntegerField(db_column='rank', default=1, null=False)
     portfoliostatusid = models.ForeignKey('PortfolioStatus', models.DO_NOTHING, db_column='PortfolioStatusid')  # Field name made lowercase.
@@ -79,6 +79,7 @@ class PortfolioType(models.Model):
     portfoliotypeid = models.AutoField(db_column='portfolioTypeid', primary_key=True)  # Field name made lowercase.
     title = models.CharField(max_length=100)
 
+
     class Meta:
         managed = False
         db_table = 'PortfolioType'
@@ -97,9 +98,14 @@ class ProgressRatio(models.Model):
 class Resource(models.Model):
     resourceid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    resourcetypeid = models.ForeignKey('Resourcetype', models.DO_NOTHING, db_column='ResourceTypeid')  # Field name made lowercase.
+    resourcetypeid = models.ForeignKey('Resourcetype', models.DO_NOTHING, db_column='resourcetypeid')  # Field name made lowercase.
+
+    teamId = models.ForeignKey('team', models.DO_NOTHING, db_column='teamid')  # Field name made lowercase.
     active = models.IntegerField()
 
+
+    def __str__(self):
+        return  str(self.resourceid) + ' '+ self.name 
     class Meta:
         managed = False
         db_table = 'Resource'
@@ -109,6 +115,9 @@ class ResourceType(models.Model):
     resourcetypeid = models.AutoField(db_column='resourceTypeid', primary_key=True)  # Field name made lowercase.
     description = models.CharField(max_length=100, blank=True, null=True)
 
+
+    def __str__(self):
+        return  str(self.resourcetypeid) + ' '+ self.description 
     class Meta:
         managed = False
         db_table = 'ResourceType'
@@ -145,6 +154,9 @@ class TaskStatus(models.Model):
 class Team(models.Model):
     teamid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return  str(self.teamid) + ' '+ self.title 
 
     class Meta:
         managed = False

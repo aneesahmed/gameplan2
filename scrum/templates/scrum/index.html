@@ -1,10 +1,1 @@
-
-{% if pflist %}
-    <ul>
-    {% for portfolio in pflist %}
-        <li><a href="/scrum/{{ portfolioid }}/">{{ portfolio.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No portfolio available.</p>
-{% endif %}
+{% include "scrum/header.html" %}

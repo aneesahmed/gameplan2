@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from  scrum.models import PortfolioStatus, Portfolio
 from django.template import loader
-
+from django.http import Http404
 #def index(request):
 #    return HttpResponse("scrum dashboard.")
 def index(request):
@@ -19,6 +19,9 @@ def index(request):
     #output = ', '.join([st.title for st in status])
     #return HttpResponse(output + "ting" + str(statusFilter[0]))
 
+def portfolioAdd(request):
+    #return HttpResponse(output)
+    return render(request, 'scrum/newPortfolio.html')    
 def portfolio(request):
     id = 1
     portfolio = Portfolio
