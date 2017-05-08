@@ -1,11 +1,26 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,HttpResponse
 from  scrum.models import PortfolioStatus, Portfolio
 from django.template import loader
 from django.http import Http404
-#def index(request):
-#    return HttpResponse("scrum dashboard.")
-def index(request):
+from .forms import PortfolioForm
+from django.core.urlresolvers import reverse
+
+
+
+def newPortfolio(request):
+    #return HttpResponse("scrum dashboard.")
+    #Add  new
+    if request.method != 'POST':
+        # No data submitted; create a blank form.
+        form = PortfolioForm()
+    else:
+    # POST data submitted; process data.
+    form = PortfolioForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse("scrum:portfolioDashboard"))
+
+def portfolioDashboard(request):
     #status = Portfoliostatus.objects.order_by('ordering')[:1]
     status = PortfolioStatus.objects.filter(portfoliostatusid=2)
     statusFilter = status.values_list("portfoliostatusid", flat=True) 
@@ -14,19 +29,11 @@ def index(request):
     context = {
         'pflist': pflist,
     }
-    #return HttpResponse(template.render(context, request))
-    return render(request, 'scrum/index.html', context)
-    #output = ', '.join([st.title for st in status])
-    #return HttpResponse(output + "ting" + str(statusFilter[0]))
+    return render(request, 'scrum/portfolioDashboard.html', context)
 
-def portfolioAdd(request):
-    #return HttpResponse(output)
-    return render(request, 'scrum/newPortfolio.html')    
-def portfolio(request):
-    id = 1
-    portfolio = Portfolio
-    try:
-        portfolio = Portfolio.objects.get(pk=id)
-    except portfolio.DoesNotExist:
-        raise Http404("portfolio does not exist")
-    return render(request, 'scrum/portfolio.html', {'portfolio': portfolio})
+
+def portfolio(request, id):
+    context = {
+        'id': id,
+    }
+    return render(request, 'scrum/portfolio.html', context)
