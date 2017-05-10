@@ -64,12 +64,14 @@ class Portfolio(models.Model):
         managed = False
         db_table = 'Portfolio'
 
+    def __str__(self):
+        return  self.title
 class PortfolioStatus(models.Model):
     portfoliostatusid = models.AutoField(db_column='PortfolioStatusid', primary_key=True)  # Field name made lowercase.
     title = models.CharField(db_column='Title', max_length=100, blank=True, null=True)  # Field name made lowercase.
 
     def __str__(self):
-        return  str(self.portfoliostatusid) + ' '+ self.title  
+        return   self.title
     class Meta:
         managed = False
         db_table = 'PortfolioStatus'
@@ -84,7 +86,7 @@ class PortfolioType(models.Model):
         managed = False
         db_table = 'PortfolioType'
     def __str__(self):
-        return  str(self.portfoliotypeid) + ' '+ self.title
+        return   self.title
 
 class ProgressRatio(models.Model):
     progressratioid = models.AutoField(db_column='progressRatioid', primary_key=True)  # Field name made lowercase.
@@ -105,7 +107,7 @@ class Resource(models.Model):
 
 
     def __str__(self):
-        return  str(self.resourceid) + ' '+ self.name 
+        return   self.name
     class Meta:
         managed = False
         db_table = 'Resource'
@@ -117,7 +119,7 @@ class ResourceType(models.Model):
 
 
     def __str__(self):
-        return  str(self.resourcetypeid) + ' '+ self.description 
+        return   self.description
     class Meta:
         managed = False
         db_table = 'ResourceType'
@@ -156,7 +158,7 @@ class Team(models.Model):
     title = models.CharField(max_length=100)
 
     def __str__(self):
-        return  str(self.teamid) + ' '+ self.title 
+        return   self.title
 
     class Meta:
         managed = False
@@ -178,7 +180,7 @@ class UserStory(models.Model):
     details = models.CharField(max_length=100, blank=True, null=True)
     userresourceid = models.ForeignKey(Resource, models.DO_NOTHING, db_column='userResourceid')  # Field name made lowercase.
     portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
-    releaseid = models.ForeignKey('Portfolireleases', models.DO_NOTHING, db_column='releaseId')  # Field name made lowercase.
+    releaseid = models.ForeignKey('PortfolioReleases', models.DO_NOTHING, db_column='releaseId')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -216,13 +218,21 @@ class ExternalLinks(models.Model):
         db_table = 'externalLInks'
 
 
-class PortfoliReleases(models.Model):
+class PortfolioReleases(models.Model):
     portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
-    releaseid = models.IntegerField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
-    plandate = models.DateField(db_column='planDate', blank=True, null=True)  # Field name made lowercase.
-    actualdate = models.DateField(db_column='actualDate', blank=True, null=True)  # Field name made lowercase.
+    #releaseid = models.IntegerField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
+    details = models.CharField(max_length=100, blank=True, null=True)
+    releaseid = models.AutoField(db_column='releaseid', primary_key=True)
+    planstartdate = models.DateField(db_column='planstartdate', blank=True, null=True)  # Field name made lowercase.
+    actualstartdate = models.DateField(db_column='actualstartdate', blank=True, null=True)  # Field name made lowercase.
+    planenddate = models.DateField(db_column='planenddate', blank=True, null=True)  # Field name made lowercase.
+    actualenddate = models.DateField(db_column='actualenddate', blank=True, null=True)  # Field name made lowercase.
+    teamId = models.ForeignKey('team', models.DO_NOTHING, db_column='teamid')  # Field name made lowercase.
 
+
+    def __str__(self):
+        return  self.details
     class Meta:
         managed = False
-        db_table = 'portfoliReleases'
-        unique_together = (('releaseid', 'portfolioid'),)
+        db_table = 'portfolioReleases'
+

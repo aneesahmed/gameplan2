@@ -1,0 +1,21 @@
+
+{% if pflist %}
+    <ul>
+    {% for portfolio in pflist %}
+        <li><a href="/scrum/{{ portfolioid }}/">{{ portfolio.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No portfolio available.</p>
+{% endif %}
+
+<h1> Working with Portfolio {{id}} </h1> 
+<form action="/your-name/" method="post">
+    <label for="your_name">Your name: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form>
+
+we need to add releases at the bottom of with add new options
+top section will contain forms for adding new form entry
+

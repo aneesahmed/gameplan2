@@ -1,0 +1,39 @@
+{% extends "scrum/header.html" %}
+{% block content %}
+     <table width="90%"><tr>
+         <th w> PortFolio</th>
+         <th> Type</th>
+         <th > Owner</th>
+         <th >Current Status</th>
+     </tr>
+         <tr>
+        <td > {{ portfolio.title }}</td>
+        <td >{{ portfolio.portfoliotypeid }}</td>
+        <td >{{ portfolio.owner }}</td>
+        <td >{{ portfolio.portfoliostatusid }}</td>
+   </tr></table>
+    <nav>
+    <hr />
+    </nav>
+     <nav>
+    <string>Active Releases</string>
+    </nav>
+    {% for release in releases %}
+    <div class="nav nav-tabs col-sm-6 col-lg-3">
+      <div class="list-group-item list-group-item-info">
+            <div align="right">
+                <strong><a href="{% url 'scrum:portfolioUpdate' release.releaseid %}">Details</a></strong>
+          </div>
+          <ul>
+               <li> <strong>{{ release.details }}</strong></li>
+                <li> Plan start{{release.planstartdate}}</li>
+                <li> actual start{{release.actualstartdate}}</li>
+                 <li>Finish{{release.planenddate}}</li>
+
+            </ul>
+       </div>
+    </div>
+
+ {% endfor %}
+
+{% endblock content %}

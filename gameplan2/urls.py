@@ -14,11 +14,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 urlpatterns = [
-
     url(r'^scrum/', include('scrum.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'',include('scrum.urls')),
-
+    url(r'users/', include('users.urls', namespace='users')),
+    #redirect after login
+    url(r'^accounts/profile/$', TemplateView.as_view(template_name='scrum/portfolio.html'), name='home'),
 ]

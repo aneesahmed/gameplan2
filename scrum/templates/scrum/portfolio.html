@@ -1,1 +1,66 @@
-{% include "scrum/header.html" %}
+{% extends "scrum/header.html" %}
+{% block content %}
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+        <div class="well">
+            <a href="{% url 'scrum:new_portfolio'  %}">add new entry</a></div><br/>
+        </div>
+
+      {% if pflist %}
+        {% for portfolio in pflist %}
+        <div class="panel col-sm-6 col-lg-3">
+          <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+
+            <ul class="list-group ">
+                <div align="right">
+                    <a href="{% url 'scrum:portfolioDetails' portfolio.portfolioid %}">Details</a>
+                </div>
+                    <li class="list-group-item list-group-item-info"><strong>Title:</strong>
+                    <span class="pull-right">{{portfolio.title}}</span>
+                </li>
+                    
+                </li>
+                <li class="list-group-item list-group-item-info"><strong>Type:</strong>
+                    <span class="pull-right">{{portfolio.portfoliotypeid}}</span>
+                </li>
+                <li class="list-group-item list-group-item-warning"><strong>Onwer:</strong>
+                    <span class="pull-right">{{portfolio.owner}}</span>
+                </li>
+                <li class="list-group-item list-group-item-danger"><strong>Project Duration:</strong>
+                    <span class="pull-right">{{totalDays}} </span>
+                </li>
+            </ul>
+              <div align="right">
+                    <a href="{% url 'scrum:portfolioUpdate' portfolio.portfolioid %}">Edit</a>
+              </div >
+           </div>
+        </div>
+
+     {% endfor %}
+    {% else %}
+      <div class="well">
+        <p>No portfolio available.</p>
+      </div>
+    {% endif %}
+ 
+    </div>
+     <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+</body>
+</html>
+{% endblock content %}

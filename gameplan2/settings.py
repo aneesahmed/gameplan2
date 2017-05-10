@@ -34,13 +34,16 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'scrum.apps.ScrumConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-   
+    # Third Party apps
+    'bootstrap3',
+
 )
 
 MIDDLEWARE_CLASSES = (

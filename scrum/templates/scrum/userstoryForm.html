@@ -1,0 +1,26 @@
+{% extends "scrum/header.html" %}
+{% block content %}
+<form action="{% url 'scrum:userstoryUpdate' %}" method='post'>
+    {% csrf_token %}
+<div class="table-responsive" >
+  <table class="table-striped table-bordered" table-hover width="60%" align="center">
+      <tr>
+      <td colspan="2" align="center">
+          <button name="submit"> Userstory Entry</button>
+      </td>
+  </tr>
+    {{ form.as_table }}
+  <tr>
+      <td colspan="2" align="right">
+          <button name="submit"> Save</button>
+      </td>
+  </tr>
+  </table>
+    <div>
+
+    </div>
+</div>
+
+
+</form>
+{% endblock content %}

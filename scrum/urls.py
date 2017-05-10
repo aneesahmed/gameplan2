@@ -3,14 +3,34 @@ from . import views
 
 app_name = 'scrum'
 urlpatterns = [
-    # page for adding a new portfolio
-    url(r'^newPortfolio/$', views.newPortfolio, name='new_topic'),
-    url(r'^portfolioDashboard', views.portfolioDashboard, name='portfolio'),
+    url(r'^$', views.index, name='index'),
+    url(r'^portfolio/Details/(?P<id>\d+)/$', views.portfolioDetails, name='portfolioDetails'),
+    url(r'^portfolio/Update/(?P<id>\d+)/$', views.portfolioUpdate, name='portfolioUpdate'),
+    url(r'^portfolio/Update', views.portfolioUpdate, name='portfolioUpdate'),
+    url(r'^portfolio/new$', views.new_portfolio, name='new_portfolio'),
+    url(r'^portfolio', views.portfolio, name='portfolio'),
+    url(r'^release/(?P<id>\d+)/$', views.releaseUpdate, name='releaseUpdate'),
     #
-    url(r'^portfolio/(?P<id>[0-9]+)/$', views.newPortfolio, name='portfolio'),
-    #portfolio/0-99
+    url(r'^userstory/new$', views.new_userstory, name='new_userstory'),
+    url(r'^sprint/new$', views.new_sprint, name='new_sprint'),
+    url(r'^task/new$', views.new_task, name='new_task'),
+    url(r'^team/new$', views.new_team, name='new_team'),
+]
 
-    #url(r'^portfolio/(?P<id>[0-9]+)/$', views.portfolioForm, name='portfolio'),
-    # ex: /portfolio/5/
-    url(r'^$', views.portfolioDashboard, name='portfolio'),     
-] 
+# User Story, userstory
+'''
+url(r'^userstory/new$', views.new_userstory, name='new_userstory'),
+url(r'^userstory', views.userstory, name='userstory'),
+# sprint
+url(r'^sprint/(?P<id>\d+)/$', views.sprintUpdate, name='sprintUpdate'),
+url(r'^sprint/new$', views.new_sprint, name='new_sprint'),
+url(r'^sprint', views.portfolio, name='sprint'),
+# Task, task
+url(r'^task/(?P<id>\d+)/$', views.taskUpdate, name='taskUpdate'),
+url(r'^task/new$', views.new_task, name='new_task'),
+# Team , team
+url(r'^team/(?P<id>\d+)/$', views.teamUpdate, name='teamUpdate'),
+url(r'^team/new$', views.new_team, name='new_team'),
+
+#Retro meeting
+'''
