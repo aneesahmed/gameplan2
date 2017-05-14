@@ -185,7 +185,7 @@ class Sprint(models.Model):
         db_table = 'sprint'
 
 class PortfolioReleases(models.Model):
-    portfolioid = models.IntegerField()
+    portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
     releaseid = models.AutoField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
     planstartdate = models.DateField(db_column='planStartDate', blank=True, null=True)  # Field name made lowercase.
     actualstartdate = models.DateField(db_column='actualStartDate', blank=True, null=True)  # Field name made lowercase.

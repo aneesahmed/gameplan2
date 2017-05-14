@@ -8,8 +8,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="{% static 'scrum/bootstrap/css/bootstrap.css' %}" />
-    <script scr="{% static 'scrum/bootstrap/js/jquery.js' %}"></script>
-    <script src="{% static 'scrum/bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'scrum/bootstrap/js/jquery-ui.css' %}"/>
+
+    <script type="text/javascript" src="{% static 'scrum/bootstrap/js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" scr="{% static 'scrum/bootstrap/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scrum/bootstrap/js/bootstrap.min.js' %}"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
@@ -43,6 +46,17 @@
       .row.content {height:auto;}
     }
   </style>
+    <script>
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2012",
+      // You can put more options here.
+
+    });
+  });
+  </script>
 </head>
 
 

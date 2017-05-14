@@ -27,7 +27,8 @@ class ReleaseForm(forms.ModelForm):
         #fields = "__all__"
 
         fields = ['portfolioid', 'details','planstartdate','actualstartdate','planenddate','actualenddate','teamid']
-        widgets = {'actualstartdate': forms.DateInput(attrs={'class':'datepicker'}),
-                   'details': forms.Textarea(attrs={'cols': 80})}
+        widgets = {'details': forms.Textarea(attrs={'cols': 80}),
+                   'planstartdate':forms.SelectDateWidget
+                   }
 
         #labels = {'title': 'Title','portfoliotypeid':'PortFolio Type','portfoliostatusid':'Status'}
