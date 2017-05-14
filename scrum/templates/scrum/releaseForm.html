@@ -1,5 +1,6 @@
 {% extends "scrum/header.html" %}
 {% block content %}
+
     <form action="{% url 'scrum:new_release' %}" method='post'>
     {% csrf_token %}
 <div class="table-responsive" >

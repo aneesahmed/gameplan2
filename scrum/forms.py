@@ -1,16 +1,16 @@
 from django import forms
 import datetime
 from django.contrib.admin import widgets
-from .models import Portfolio , PortfolioReleases, PortfolioStatus,UserStory
+from .models import Portfolio , PortfolioReleases, PortfolioStatus,Userstory
 
 
 class UserstoryForm(forms.ModelForm):
 
     class Meta:
-        model = UserStory
+        model = Userstory
         fields = "__all__"
         #labels =
-        #widgets = {'details': forms.Textarea(attrs={'cols': 80})}
+        widgets = {'details': forms.Textarea(attrs={'cols': 80})}
 
 class PortfolioForm(forms.ModelForm):
 
@@ -26,8 +26,8 @@ class ReleaseForm(forms.ModelForm):
         model = PortfolioReleases
         #fields = "__all__"
 
-        fields = ['portfolioid', 'details','planstartdate','actualstartdate','planenddate','actualenddate','teamId']
-        widgets = {'actualstartdate': forms.DateInput(format='%d/%m/%Y')}
-
+        fields = ['portfolioid', 'details','planstartdate','actualstartdate','planenddate','actualenddate','teamid']
+        widgets = {'actualstartdate': forms.DateInput(attrs={'class':'datepicker'}),
+                   'details': forms.Textarea(attrs={'cols': 80})}
 
         #labels = {'title': 'Title','portfoliotypeid':'PortFolio Type','portfoliostatusid':'Status'}

@@ -10,11 +10,11 @@ urlpatterns = [
     url(r'^portfolio/new$', views.new_portfolio, name='new_portfolio'),
     url(r'^portfolio', views.portfolio, name='portfolio'),
     url(r'^release/(?P<id>\d+)/$', views.releaseUpdate, name='releaseUpdate'),
-    #
+    url(r'^release/new$', views.new_release, name='new_release'),
     url(r'^userstory/new$', views.new_userstory, name='new_userstory'),
-    url(r'^sprint/new$', views.new_sprint, name='new_sprint'),
-    url(r'^task/new$', views.new_task, name='new_task'),
-    url(r'^team/new$', views.new_team, name='new_team'),
+    #url(r'^sprint/new$', views.new_sprint, name='new_sprint'),
+    #url(r'^task/new$', views.new_task, name='new_task'),
+    #url(r'^team/new$', views.new_team, name='new_release'),
 ]
 
 # User Story, userstory

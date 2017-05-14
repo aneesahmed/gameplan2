@@ -8,7 +8,8 @@ from .models import Team
 from .models import TeamResource
 from .models import Portfolio
 from .models import PortfolioReleases
-from .models import  UserStory
+from .models import Sprint
+#from .models import  Userstory
 
 admin.site.register(PortfolioStatus)
 admin.site.register(PortfolioType)
@@ -18,4 +19,5 @@ admin.site.register(Team)
 admin.site.register(TeamResource)
 admin.site.register(Portfolio)
 admin.site.register(PortfolioReleases)
-admin.site.register(UserStory)
+admin.site.register(Sprint)
+#admin.site.register(UserStory)

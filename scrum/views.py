@@ -1,10 +1,10 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
-from  scrum.models import PortfolioStatus, Portfolio, PortfolioReleases, UserStory, Sprint
+from  scrum.models import PortfolioStatus, Portfolio, PortfolioReleases, Userstory
 from django.template import loader
 from django.http import Http404
-from .forms import PortfolioForm, ReleaseForm,UserstoryForm, SprintForm
+from .forms import PortfolioForm, ReleaseForm, UserstoryForm
 from django.core.urlresolvers import reverse
 
 
@@ -34,7 +34,7 @@ def portfolio(request):
     }
     return render(request, 'scrum/portfolio.html', context)
 
-
+'''
 @login_required
 def new_sprint(request):
     if request.method != 'POST':
@@ -61,7 +61,9 @@ def sprintUpdate(request, id=-1):
             return HttpResponseRedirect(reverse(('scrum:portfolio')))
         else:
             return HttpResponse("invalid form.")
+
 ################################33333
+'''
 @login_required
 def new_userstory(request):
     if request.method != 'POST':
