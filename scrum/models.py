@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
-
+from django.urls import reverse
 from django.db import models
 
 
@@ -36,6 +36,7 @@ class Portfoliolables(models.Model):
     portfoliolablesid = models.AutoField(db_column='portfolioLablesid', primary_key=True)  # Field name made lowercase.
     label = models.CharField(max_length=100, blank=True, null=True)
     portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
+
 
     class Meta:
         managed = False
