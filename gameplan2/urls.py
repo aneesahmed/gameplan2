@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'',include('scrum.urls')),
     url(r'users/', include('users.urls', namespace='users')),
     #redirect after login
-    url(r'^accounts/profile/$', TemplateView.as_view(template_name='scrum/portfolio.html'), name='home'),
+    #url(r'^accounts/profile/$', TemplateView.as_view(template_name='scrum/portfolio.html'), name='home'),
 ]

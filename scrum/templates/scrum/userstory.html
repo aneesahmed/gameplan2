@@ -9,17 +9,17 @@
     </div>
     <div class="col-sm-8 text-left"> 
         <div class="well">
-            <a href="">add new entry</a></div><br/>
+            <a href="{% url 'scrum:new_userstory'  %}">add new entry</a></div><br/>
         </div>
 
-      {% if portfoliolist %}
-        {% for portfolio in portfoliolist %}
+      {% if pflist %}
+        {% for portfolio in pflist %}
         <div class="panel col-sm-6 col-lg-3">
           <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
 
             <ul class="list-group ">
                 <div align="right">
-                    <a href="{% url 'scrum:portfolio-detail' portfolio.portfolioid %}">Details</a>
+                    <a href="{% url 'scrum:portfolioDetails' portfolio.portfolioid %}">Details</a>
                 </div>
                     <li class="list-group-item list-group-item-info"><strong>Title:</strong>
                     <span class="pull-right">{{portfolio.title}}</span>
@@ -37,7 +37,7 @@
                 </li>
             </ul>
               <div align="right">
-                    <a href="#">Edit</a>
+                    <a href="{% url 'scrum:portfolioUpdate' portfolio.portfolioid %}">Edit</a>
               </div >
            </div>
         </div>

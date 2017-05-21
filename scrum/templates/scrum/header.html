@@ -72,7 +72,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/scrum/portfolio">Portfolio</a></li>
+        <li class="active"><a href="/scrum/portfolioList">Portfolio</a></li>
         <li><a href="">User Stories</a></li>
         <li><a href="">Sprint</a></li>
         <li><a href="">Reporting</a></li>
@@ -95,9 +95,9 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <ul class="nav navbar-nav">
-          <li><a href="{% url 'scrum:new_portfolio' %}">New Portfolio</a></li>
-          <li><a href="{% url 'scrum:new_release' %}">New Release</a></li>
-          <li><a href="{% url 'scrum:new_userstory' %}">New User Story</a></li>
+          <li><a href="#">New Portfolio</a></li>
+          <li><a href="#">New Release</a></li>
+          <li><a href="#">New User Story</a></li>
           <li><a href="#">New Sprint</a></li>
           <li><a href="#">New New Task</a></li>
           <li><a href="#">New Team</a></li>
@@ -109,3 +109,20 @@
 {% block content %}
 
 {% endblock content %}
+{% block pagination %}
+  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+{% endblock %}
