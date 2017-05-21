@@ -1,32 +1,25 @@
 {% extends "scrum/header.html" %}
-{% block sidebar %}
-<ul class="sidebar-nav">
-          <li><a href="#">Active</a></li>
-          <li><a href="">In progress</a></li>
-          <li><a href="">assigned</a></li>
-</ul>
-
-{% endblock %}
 {% block content %}
 <div class="container-fluid text-center">
-    <div class="panel col-sm-6 col-lg-12 ">
-        <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
-
-            <div class="well">
-
-                <a href="">add new entry</a></div>
-
-            </div>
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+        <div class="well">
+            <a href="{% url 'scrum:new_userstory'  %}">add new entry</a></div><br/>
         </div>
 
-      {% if portfoliolist %}
-        {% for portfolio in portfoliolist %}
-    <div class="panel col-sm-6 col-lg-3">
-        <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+      {% if pflist %}
+        {% for portfolio in pflist %}
+        <div class="panel col-sm-6 col-lg-3">
+          <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
 
             <ul class="list-group ">
                 <div align="right">
-                    <a href="{% url 'scrum:portfolio-detail' portfolio.portfolioid %}">Details</a>
+                    <a href="{% url 'scrum:portfolioDetails' portfolio.portfolioid %}">Details</a>
                 </div>
                     <li class="list-group-item list-group-item-info"><strong>Title:</strong>
                     <span class="pull-right">{{portfolio.title}}</span>
@@ -44,10 +37,10 @@
                 </li>
             </ul>
               <div align="right">
-                    <a href="#">Edit</a>
+                    <a href="{% url 'scrum:portfolioUpdate' portfolio.portfolioid %}">Edit</a>
               </div >
+           </div>
         </div>
-    </div>
 
      {% endfor %}
     {% else %}
@@ -56,8 +49,18 @@
       </div>
     {% endif %}
  
-
+    </div>
+     <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
 </div>
+</nav>
 </body>
 </html>
 {% endblock content %}

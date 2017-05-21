@@ -1,39 +1,17 @@
 {% extends "scrum/header.html" %}
 {% block content %}
-     <table width="90%"><tr>
-         <th w> PortFolio</th>
-         <th> Type</th>
-         <th > Owner</th>
-         <th >Current Status</th>
-     </tr>
-         <tr>
-        <td > {{ portfolio.title }}</td>
-        <td >{{ portfolio.portfoliotypeid }}</td>
-        <td >{{ portfolio.owner }}</td>
-        <td >{{ portfolio.portfoliostatusid }}</td>
-   </tr></table>
-    <nav>
-    <hr />
-    </nav>
-     <nav>
-    <string>Active Releases</string>
-    </nav>
-    {% for release in releases %}
-    <div class="nav nav-tabs col-sm-6 col-lg-3">
-      <div class="list-group-item list-group-item-info">
-            <div align="right">
-                <strong><a href="{% url 'scrum:portfolioUpdate' release.releaseid %}">Details</a></strong>
-          </div>
-          <ul>
-               <li> <strong>{{ release.details }}</strong></li>
-                <li> Plan start{{release.planstartdate}}</li>
-                <li> actual start{{release.actualstartdate}}</li>
-                 <li>Finish{{release.planenddate}}</li>
+<div align="center" class="panel panel-primary col-lg-8" style="padding: 10px;" border="1">
+    <table class="table table-hover">
+        <tr>
+            <td class="warning">Portofolio</td><td > {{ portfolio.title }}</td>
 
-            </ul>
-       </div>
-    </div>
+            <td class="warning">Type</td><td >{{ portfolio.portfoliotypeid }}</td>
+        </tr>
 
- {% endfor %}
-
-{% endblock content %}
+        <tr >
+            <td class="info">Owner</td><td >{{ portfolio.owner }}</td>
+            <td class="info">Current Status</td><td >{{ portfolio.portfoliostatusid }}</td>
+        </tr>
+    </table>
+</div>
+  {% endblock content %}
