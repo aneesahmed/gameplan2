@@ -14,7 +14,7 @@
 
             <div class="well">
 
-                <a href="">add new entry</a></div>
+                <a href="{% url 'scrum:portfolio-add' %}  ">add new entry</a></div>
 
             </div>
         </div>
@@ -44,7 +44,8 @@
                 </li>
             </ul>
               <div align="right">
-                    <a href="#">Edit</a>
+                   <span class="pull-left"><a href="{% url 'scrum:portfolio-update' portfolio.portfolioid %}">Edit</a></span>
+                     <span class="pull-right"><a href="{% url 'scrum:portfolio-delete' portfolio.portfolioid %}">Delete</a></span>
               </div >
         </div>
     </div>

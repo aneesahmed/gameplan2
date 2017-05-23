@@ -1,0 +1,27 @@
+{% extends "scrum/header.html" %}
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<form action="" method='post'>
+    {% csrf_token %}
+<div class="table-responsive" >
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+  <table class="table-striped table-bordered" table-hover width="60%" align="center">
+      <tr>
+             {% include 'scrum/form_template.html' %}
+
+  </tr>
+
+  <tr>
+      <td colspan="2" align="right">
+          <button name="submit"> Save</button>
+      </td>
+  </tr>
+  </table>
+    </form>
+    <div>
+
+    </div>
+</div>
+{% endblock %}

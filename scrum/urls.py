@@ -7,9 +7,9 @@ urlpatterns = [
     url(r'^$',  PortfolioList.as_view(), name='index'),
     url(r'^portfolioList',  PortfolioList.as_view(), name='portfolioList'),
     url(r'^portfolio/(?P<pk>\d+)$', PortfolioDetails.as_view(), name='portfolio-detail'),
-    url(r'^portfolio/add', PortfolioCreate.as_view(), name='portfolio-create'),
-    #url(r'^portfolio/add', PortfolioUpdate.as_view(), name='portfolio-update'),
-    #url(r'^portfolio/add', PortfolioDelete.as_view(), name='portfolio-delete'),
+    url(r'^portfolio/add', PortfolioCreate.as_view(), name='portfolio-add'),
+    url(r'^portfolio/update/(?P<pk>\d+)$', PortfolioUpdate.as_view(), name='portfolio-update'),
+    url(r'^portfolio/delete/(?P<pk>\d+)$', PortfolioDelete.as_view(), name='portfolio-delete'),
 
     # url(r'^portfolio/Details/(?P<id>\d+)/$', portfolioDetails(), name='portfolioDetails'),
    # url(r'^portfolio/Update/(?P<id>\d+)/$', portfolios.portfolioUpdate, name='portfolioUpdate'),

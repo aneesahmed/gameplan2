@@ -9,6 +9,7 @@
 from __future__ import unicode_literals
 from django.urls import reverse
 from django.db import models
+
 #from scrum.submodels.userstorymodel import
 from scrum.submodels.teammodel import Team
 
@@ -66,7 +67,7 @@ class Portfolio(models.Model):
         """
         Returns the url to access a particular book instance.
         """
-        return reverse('portfolio-detail', args=[str(self.portfolioid)])
+        return reverse('scrum:portfolio-detail', args=[str(self.portfolioid)])
 
     def __str__(self):
         return  self.title
@@ -145,10 +146,9 @@ class PortfolioReleases(models.Model):
     actualenddate = models.DateField(db_column='actualEndDate', blank=True, null=True)  # Field name made lowercase.
     details = models.CharField(max_length=100, blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'portfolioreleases'
-
+    def get_absolute_url(self):
+        return reverse('PortfolioReleases-detail', kwargs={'pk': self.pk})
+        
     def __str__(self):
         return  self.details
     class Meta:

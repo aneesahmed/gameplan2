@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
 from  scrum.models import PortfolioStatus, Portfolio, PortfolioReleases, Userstory
 from django.template import loader
+from django.urls import reverse_lazy
 from django.http import Http404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -12,7 +13,9 @@ class PortfolioList(ListView):
     template_name = 'scrum/portfolio.html'
     context_object_name = 'portfoliolist'
     paginate_by = 20
-
+    # model
+    # get_object
+    #queryset
     #def get_queryset(self):
     #    """Return the last five published questions."""
     #    #return Userstory.objects.order_by('-userstoryid')[:30]
@@ -28,14 +31,16 @@ class PortfolioDetails(DetailView):
 
 class PortfolioCreate(CreateView):
     model = Portfolio
-    #fields =  []
+    fields =  ['title','portfoliotypeid','owner','details','rank','portfoliostatusid' ]
 
 class PortfolioUpdate(UpdateView):
     model = Portfolio
-
+    fields =  ['title','portfoliotypeid','owner','details','rank','portfoliostatusid' ]
 
 class PortfolioDelete(DeleteView):
     model = Portfolio
+    success_url = reverse_lazy('scrum:portfolioList')
+
 ######################################
 '''
 def index(request):
