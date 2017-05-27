@@ -1,6 +1,6 @@
 {% extends "scrum/header.html" %}
 {% block content %}
-<div align="center" class="panel panel-primary col-lg-8" style="padding: 10px;" border="1">
+<div align="center" class="panel panel-primary col-lg-12" style="padding: 10px;" border="1">
     <table class="table table-hover">
         <tr>
             <td class="warning">Portofolio</td><td > {{ portfolio.title }}</td>
@@ -14,4 +14,14 @@
         </tr>
     </table>
 </div>
-  {% endblock content %}
+<br />
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Releases</h4>
+
+    {% for release in portfolio.portfolioinstance_set.all %}
+    <hr>
+    <p><strong>Release:</strong> {{release.releaseid}}</p>
+    <p class="text-muted"><strong>Details:</strong> {{release.details}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}
