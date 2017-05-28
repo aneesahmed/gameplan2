@@ -6,6 +6,7 @@ from django.template import loader
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView
 
 
 class PortfolioList(ListView):
@@ -23,11 +24,23 @@ class PortfolioList(ListView):
      #   return Portfolio.objects.all().order_by('rank')
 
 
+class Dashboard(TemplateView):
+        template_name = "scrum/dashboard.html"
+
+        def get_context_data(self, **kwargs):
+            context = super(Dashboard, self).get_context_data(**kwargs)
+            context['latest_portfolios'] = Portfolio.objects.all()[:5]
+            context['portfolio_status'] = PortfolioStatus.objects.all()
+            return context
 
 class PortfolioDetails(DetailView):
     model = Portfolio
     template_name = 'scrum/portfolioDetails.html'
     context_object_name = 'portfolio'
+    def get_context_data(self, *args, **kwargs):
+        context = super(PortfolioDetails, self).get_context_data(*args, **kwargs)
+        context['portfolio_status'] = PortfolioStatus.objects.all()
+        return context
 
 class PortfolioCreate(CreateView):
     model = Portfolio

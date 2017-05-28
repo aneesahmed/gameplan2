@@ -5,6 +5,7 @@ from scrum.views.portfolioView import PortfolioList, PortfolioDetails, Portfolio
 app_name = 'scrum'
 urlpatterns = [
     url(r'^$',  PortfolioList.as_view(), name='index'),
+    url(r'^dashboard', Dashboard.as_view(), name='dashboard'),
     url(r'^portfolioList',  PortfolioList.as_view(), name='portfolioList'),
     url(r'^portfolio/(?P<pk>\d+)$', PortfolioDetails.as_view(), name='portfolio-detail'),
     url(r'^portfolio/add', PortfolioCreate.as_view(), name='portfolio-add'),
