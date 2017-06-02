@@ -9,6 +9,8 @@
 from __future__ import unicode_literals
 from django.urls import reverse
 from django.db import models
+from  datetime import  date
+from django.contrib.auth.models import User
 
 #from scrum.submodels.userstorymodel import
 from scrum.submodels.teammodel import Team
@@ -39,6 +41,7 @@ class PortfolioLinks(models.Model):
     portfolioLinksLabelid = models.ForeignKey('PortfolioLinksLabel', models.DO_NOTHING, db_column='portfoliolinkslabelid')  # Field name made lowercase.
     portfolioid = models.ForeignKey('Portfolio', models.DO_NOTHING, db_column='portfolioid')
 
+
     class Meta:
         managed = False
         db_table = 'PortfolioLinks'
@@ -62,7 +65,8 @@ class Portfolio(models.Model):
     details = models.TextField(blank=True, null=True)
     rank    = models.IntegerField(db_column='rank', default=1, null=False)
     portfoliostatusid = models.ForeignKey('PortfolioStatus', models.DO_NOTHING, db_column='PortfolioStatusid')  # Field name made lowercase.
-
+    createby = models.CharField(max_length=100)
+    createdate =models.DateField(db_column='createDate', blank=True, null=True,default=date.today)  # Field name made lowercase.
     def get_absolute_url(self):
         """
         Returns the url to access a particular book instance.
@@ -136,24 +140,6 @@ class TaskStatus(models.Model):
         db_table = 'TaskStatus'
 
 
-class PortfolioReleases(models.Model):
-    portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
-    releaseid = models.AutoField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
-    planstartdate = models.DateField(db_column='planStartDate', blank=True, null=True)  # Field name made lowercase.
-    actualstartdate = models.DateField(db_column='actualStartDate', blank=True, null=True)  # Field name made lowercase.
-    teamid = models.ForeignKey(Team, models.DO_NOTHING, db_column='teamid')
-    planenddate = models.DateField(db_column='planEndDate', blank=True, null=True)  # Field name made lowercase.
-    actualenddate = models.DateField(db_column='actualEndDate', blank=True, null=True)  # Field name made lowercase.
-    details = models.CharField(max_length=100, blank=True, null=True)
-
-    def get_absolute_url(self):
-        return reverse('PortfolioReleases-detail', kwargs={'pk': self.pk})
-        
-    def __str__(self):
-        return  self.details
-    class Meta:
-        managed = False
-        db_table = 'portfolioReleases'
 
 
 
@@ -167,7 +153,6 @@ class WorkLog(models.Model):
     class Meta:
         managed = False
         db_table = 'WorkLog'
-
 
 class TaskLinksLabel(models.Model):
     tasklinkslabelid = models.AutoField(db_column='tasklinkslabelid', primary_key=True)  # Field name made lowercase.

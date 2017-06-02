@@ -7,7 +7,7 @@ from scrum.forms import UserstoryForm
 from django.core.urlresolvers import reverse
 from  scrum.models import PortfolioStatus, Portfolio, PortfolioReleases, Userstory
 from django.views.generic import ListView, DetailView
-from scrum.submodels.userstorymodel import Userstory
+from scrum.submodels.portfolioReleasemodel import Userstory
 
 # unassigned
 # release wise filter

@@ -37,6 +37,7 @@ class PortfolioDetails(DetailView):
     model = Portfolio
     template_name = 'scrum/portfolioDetails.html'
     context_object_name = 'portfolio'
+
     def get_context_data(self, *args, **kwargs):
         context = super(PortfolioDetails, self).get_context_data(*args, **kwargs)
         context['portfolio_status'] = PortfolioStatus.objects.all()
@@ -45,6 +46,10 @@ class PortfolioDetails(DetailView):
 class PortfolioCreate(CreateView):
     model = Portfolio
     fields =  ['title','portfoliotypeid','owner','details','rank','portfoliostatusid' ]
+
+    def form_valid(self, form):
+            form.instance.createby = self.request.user
+            return super(PortfolioCreate, self).form_valid(form)
 
 class PortfolioUpdate(UpdateView):
     model = Portfolio
