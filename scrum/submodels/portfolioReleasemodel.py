@@ -45,7 +45,7 @@ class PortfolioReleases(models.Model):
     updatedate = models.DateField(db_column='updatedate', blank=True, null=True, default=date.today)  # Field name made lowercase.
 
     def get_absolute_url(self):
-        return reverse('scrum:portfolio-detail', args=[Portfolio.objects.get(pk=self.portfolioid_id)])
+        return reverse('scrum:portfolio-detail', args=[self.portfolioid_id])
 
 
         #return reverse('releaseList')

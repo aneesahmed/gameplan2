@@ -78,9 +78,9 @@ class UserstoryUpdate(UpdateView):
     model = Userstory
     form_class = UserstoryForm
     def form_valid(self, form):
-            #form.instance.portfolioId
-            form.instance.updateby = self.request.user
-            return super(UserstoryUpdate, self).form_valid(form)
+        #form.instance.portfolioId
+        form.instance.updateby = self.request.user._wrapped if hasattr(self.request.user,'_wrapped') else self.request.user
+        return super(UserstoryUpdate, self).form_valid(form)
 
 class UserstoryDelete(DeleteView):
     model = Userstory

@@ -77,7 +77,7 @@ class Portfolio(models.Model):
         return reverse('scrum:portfolio-detail', args=[str(self.portfolioid)])
 
     def __str__(self):
-        return  str(self.portfolioid)
+        return  str(self.title )
     class Meta:
         managed = False
         db_table = 'Portfolio'

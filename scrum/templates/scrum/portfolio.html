@@ -1,4 +1,11 @@
 {% extends "scrum/header.html" %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'scrum:portfolioList' %}">Porfolios</a></li>
+     </ul>
+
+{% endblock %}
 
 {% block sidebar %}
 <ul class="sidebar-nav">

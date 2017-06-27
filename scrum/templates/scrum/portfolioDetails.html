@@ -1,5 +1,12 @@
 {% extends "scrum/header.html" %}
 
+{% block breadcrumbs %}
+    {{ block.super }}
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'scrum:portfolioList' %}">Porfolios</a></li>
+      <li><a href="{{ Portfolio.get_absolute_url }}">{{ portfolio.title }}</a></li>
+    </ul>
+{% endblock %}
 {% block sidebar %}
 <ul class="sidebar-nav">
     {% if portfolio_status %}
@@ -11,9 +18,6 @@
 
 <div>
 
-{% block breadcrumbs %}
-
-{% endblock %}
 </div>
 {% endblock %}
 {% block content %}

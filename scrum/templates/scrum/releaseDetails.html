@@ -1,4 +1,5 @@
 {% extends "scrum/header.html" %}
+
 {% block sidebar %}
 <ul class="sidebar-nav">
     {% if release_status %}
@@ -9,7 +10,13 @@
 </ul>
 
 {% endblock %}
-
+{% block breadcrumbs %}
+<ul class="nav navbar-nav">
+    <li><a href="{% url 'scrum:portfolioList' %}">Porfolios</a></li>
+    <li><a href ="{% url 'scrum:portfolio-detail' release.portfolioid_id %} ">{{ release.portfolioid }}</a> </li>
+    <li><a href="{{ PortfolioReleases.get_absolute_url }}"> Release</a> </li>
+</ul>
+{% endblock %}
 {% block content %}
 <div align="center" class="panel panel-primary col-lg-12" style="padding: 10px;" border="1">
     <table class="table table-hover">
