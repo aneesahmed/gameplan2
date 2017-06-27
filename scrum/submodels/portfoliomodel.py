@@ -67,6 +67,9 @@ class Portfolio(models.Model):
     portfoliostatusid = models.ForeignKey('PortfolioStatus', models.DO_NOTHING, db_column='PortfolioStatusid')  # Field name made lowercase.
     createby = models.CharField(max_length=100)
     createdate =models.DateField(db_column='createDate', blank=True, null=True,default=date.today)  # Field name made lowercase.
+    updateby = models.CharField(max_length=100)
+    updatedate = models.DateField(db_column='updatedate', blank=True, null=True, default=date.today)  # Field name made lowercase.
+
     def get_absolute_url(self):
         """
         Returns the url to access a particular book instance.
@@ -74,7 +77,7 @@ class Portfolio(models.Model):
         return reverse('scrum:portfolio-detail', args=[str(self.portfolioid)])
 
     def __str__(self):
-        return  self.title
+        return  str(self.portfolioid)
     class Meta:
         managed = False
         db_table = 'Portfolio'

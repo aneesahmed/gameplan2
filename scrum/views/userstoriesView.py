@@ -29,7 +29,7 @@ def new_userstory(request):
     if request.method != 'POST':
         form = UserstoryForm()
         context = {'form': form}
-        return render(request, 'scrum/userstoryForm.html', context)
+        return render(request, 'scrum/userstory_form.html', context)
 
 
 def userstoryUpdate(request, id=-1):
@@ -37,7 +37,7 @@ def userstoryUpdate(request, id=-1):
         userstory = Userstory.objects.get(userstoryid=id)
         form = UserstoryForm(instance=userstory)
         context = {'userStory': userstory, 'form': form}
-        return render(request, 'scrum/userstoryForm.html', context)
+        return render(request, 'scrum/userstory_form.html', context)
     else:
         if id== -1:
             form = UserstoryForm(data=request.POST)

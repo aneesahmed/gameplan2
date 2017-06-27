@@ -1,52 +1,65 @@
 {% extends "scrum/header.html" %}
 {% block sidebar %}
 <ul class="sidebar-nav">
-    {% if portfolio_status %}
-        {% for status in portfolio_status %}
+    {% if release_status %}
+        {% for status in release_status %}
           <li><a href="#">{{ status.title }}</a></li>
         {% endfor %}
     {% endif %}
 </ul>
 
 {% endblock %}
+
 {% block content %}
 <div align="center" class="panel panel-primary col-lg-12" style="padding: 10px;" border="1">
     <table class="table table-hover">
         <tr>
-            <td class="warning">Portofolio</td><td > {{ portfolio.title }}</td>
+            <td class="warning">Release</td><td >{{ release.portfolioid}} {{ release.details }}</td>
 
-            <td class="warning">Type</td><td >{{ portfolio.portfoliotypeid }}</td>
+            <td class="warning">Expected Start</td><td >{{ release.planstartdate }}</td>
+            <td class="info">Actual start</td><td >{{ release.actualstartdate }}</td>
         </tr>
 
         <tr >
-            <td class="info">Owner</td><td >{{ portfolio.owner }}</td>
-            <td class="info">Current Status</td><td >{{ portfolio.portfoliostatusid }}</td>
+            <td class="info">Current Status</td><td >{{ release.releasestatusid}}</td>
+            <td class="warning">Expected End</td><td >{{ release.planenddate }}</td>
+            <td class="info">Actual End</td><td >{{ release.actualenddate }}</td>
         </tr>
+
     </table>
 </div>
-<br />
-<div style="margin-left:20px;margin-top:20px">
-    <h4>Releases         <a href="#" class="btn btn-info" role="button">Add New Release</a>
-</h4>
-
-</div>
-<div style="margin-left:20px;margin-top:20px" border="1">
+<div class="panel panel-primary col-lg-6" style="margin-left:20px;margin-top:20px" border="1">
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
-                <td> Details </td><td> </td><td>  </td><td>Plan Start</td><td>Actual Start</td><td>Plan Finish</td><td>Actual Finish</td>
+                <td colspan="4" class="btn btn-info" role="button"> Unassigned User Stories </td>
             </tr>
         </thead>
-    {% for release in portfolio.portfolioreleases_set.all %}
+    {% for userstory in release.userstory_set.all %}
 
         <tr>
-            <td><a href = "{{release.releaseid}}"> {{release.releaseid}}{{ " - " }}{{  release.details }}</a></td>
-            <td align="center">    <a href="#" class="btn btn-info" role="button">Edit</a></td>
-            <td align ="center">    <a href="#" class="btn btn-info" role="button">delete</a></td>
-            <td>{{ release.planstartdate }}</td>
-            <td>{{ release.actualstartdate }}</td>
-            <td>{{ release.planenddate }}</td>
-            <td>{{ release.actualenddate }}</td>
+            <td>{{userstory.userstoryid}}{{ " - " }}{{  userstory.details }}</td>
+            <td align="center">    <a href="{% url 'scrum:userstory-update' userstory.userstoryid %}">Edit</a></td>
+            <td align ="center">    <a href="{% url 'scrum:userstory-delete' userstory.userstoryid %}">delete</a></td>
+            <td>created {{ userstory.createdate }} by {{ userstory.createby }} last updated {{ userstory.updatedate }} by {{ userstory.updateby }} </td>
+        </tr>
+    {% endfor %}
+   </table>
+</div>
+<div class="panel panel-primary col-lg-5" style="margin-left:20px;margin-top:20px" border="1">
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <td colspan="4" class="btn btn-info" role="button"> Sprints of this Release </td>
+            </tr>
+        </thead>
+    {% for sprint in release.sprint_set.all %}
+
+        <tr>
+            <td>{{sprint.sprintid}}{{ " - " }}{{  sprint.details }}</td>
+            <td align="center">    <a href="{% url 'scrum:sprint-update' sprint.sprintid %}">Edit</a></td>
+            <td align ="center">    <a href="{% url 'scrum:sprint-delete' sprint.sprintid %}">delete</a></td>
+            <td>started on  {{ sprint.startdate }} by {{ sprint.createby }} last updated {{ sprint.updatedate }} by {{ sprint.updateby }} </td>
         </tr>
     {% endfor %}
    </table>

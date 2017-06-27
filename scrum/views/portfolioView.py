@@ -138,7 +138,7 @@ def new_release(request):
     else:
         form = ReleaseForm()
         context = {'form': form}
-        return render(request, 'scrum/releaseForm.html', context)
+        return render(request, 'scrum/portfolioreleases_form.html', context)
 
 
 '''

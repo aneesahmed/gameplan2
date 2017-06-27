@@ -1,4 +1,5 @@
 {% extends "scrum/header.html" %}
+
 {% block sidebar %}
 <ul class="sidebar-nav">
     {% if portfolio_status %}
@@ -8,6 +9,12 @@
     {% endif %}
 </ul>
 
+<div>
+
+{% block breadcrumbs %}
+
+{% endblock %}
+</div>
 {% endblock %}
 {% block content %}
 <div align="center" class="panel panel-primary col-lg-12" style="padding: 10px;" border="1">
@@ -26,7 +33,7 @@
 </div>
 <br />
 <div style="margin-left:20px;margin-top:20px">
-    <h4>Releases         <a href="#" class="btn btn-info" role="button">Add New Release</a>
+    <h4>Releases <a href="{% url 'scrum:release-add' portfolio.portfolioid %}" class="btn btn-info" role="button">Add New Release</a>
 </h4>
 
 </div>
@@ -40,9 +47,9 @@
     {% for release in portfolio.portfolioreleases_set.all %}
 
         <tr>
-            <td><a href = "{{release.releaseid}}"> {{release.releaseid}}{{ " - " }}{{  release.details }}</a></td>
-            <td align="center">    <a href="#" class="btn btn-info" role="button">Edit</a></td>
-            <td align ="center">    <a href="#" class="btn btn-info" role="button">delete</a></td>
+            <td><a href = "{% url 'scrum:release-detail' release.releaseid %}"> {{release.releaseid}}{{ " - " }}{{  release.details }}</a></td>
+            <td align="center">    <a href="{% url 'scrum:release-update' release.releaseid %}" class="btn btn-info" role="button">Edit</a></td>
+            <td align ="center">    <a href="{% url 'scrum:release-delete' release.releaseid %}" class="btn btn-info" role="button">delete</a></td>
             <td>{{ release.planstartdate }}</td>
             <td>{{ release.actualstartdate }}</td>
             <td>{{ release.planenddate }}</td>

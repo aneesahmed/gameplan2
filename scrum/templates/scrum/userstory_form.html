@@ -1,6 +1,6 @@
 {% extends "scrum/header.html" %}
 {% block content %}
-<form action="{% url 'scrum:userstoryUpdate' %}" method='post'>
+<form action="{% url 'scrum:userstory-update' userstory.userstoryid %}" method='post'>
     {% csrf_token %}
 <div class="table-responsive" >
   <table class="table-striped table-bordered" table-hover width="60%" align="center">
