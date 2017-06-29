@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from  scrum.models import PortfolioStatus, Portfolio, PortfolioReleases, Userstory
 from django.template import loader
 from django.urls import reverse_lazy
@@ -9,7 +10,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.views.generic import TemplateView
 
 
-class PortfolioList(ListView):
+class PortfolioList(LoginRequiredMixin,ListView):
     model = Portfolio
     template_name = 'scrum/portfolio.html'
     context_object_name = 'portfoliolist'
@@ -24,7 +25,7 @@ class PortfolioList(ListView):
      #   return Portfolio.objects.all().order_by('rank')
 
 
-class Dashboard(TemplateView):
+class Dashboard(LoginRequiredMixin, TemplateView):
         template_name = "scrum/dashboard.html"
 
         def get_context_data(self, **kwargs):
@@ -33,7 +34,7 @@ class Dashboard(TemplateView):
             context['portfolio_status'] = PortfolioStatus.objects.all()
             return context
 
-class PortfolioDetails(DetailView):
+class PortfolioDetails(LoginRequiredMixin,DetailView):
     model = Portfolio
     template_name = 'scrum/portfolioDetails.html'
     context_object_name = 'portfolio'
@@ -43,19 +44,24 @@ class PortfolioDetails(DetailView):
         context['portfolio_status'] = PortfolioStatus.objects.all()
         return context
 
-class PortfolioCreate(CreateView):
+class PortfolioCreate(LoginRequiredMixin,CreateView):
     model = Portfolio
     fields =  ['title','portfoliotypeid','owner','details','rank','portfoliostatusid' ]
 
     def form_valid(self, form):
-            form.instance.createby = self.request.user
+            form.instance.createby = self.request.user.username
             return super(PortfolioCreate, self).form_valid(form)
 
-class PortfolioUpdate(UpdateView):
+class PortfolioUpdate(LoginRequiredMixin,UpdateView):
     model = Portfolio
     fields =  ['title','portfoliotypeid','owner','details','rank','portfoliostatusid' ]
+    def form_valid(self, form):
+            #form.instance.portfolioId
+            form.instance.updateby =  self.request.user.username
+            #form.instance.portfolioid = Portfolio.objects.get(pk=self.kwargs['portfolio_id'])
+            return super(PortfolioUpdate, self).form_valid(form)
 
-class PortfolioDelete(DeleteView):
+class PortfolioDelete(LoginRequiredMixin,DeleteView):
     model = Portfolio
     success_url = reverse_lazy('scrum:portfolioList')
 

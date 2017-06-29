@@ -43,7 +43,7 @@ class UserstoryForm(forms.ModelForm):
         model = Userstory
         #fields = "__all__"
 
-        fields = [ 'details','createby','createdate','updateby','updatedate']
+        fields = [ 'details', 'sprintid','createby','createdate','updateby','updatedate']
         widgets = {'details': forms.Textarea(attrs={'cols': 20,'rows':3}),
                    'createby':forms.TextInput(attrs={'readonly':'readonly'}),
                    'updateby': forms.TextInput(attrs={'readonly': 'readonly'}),

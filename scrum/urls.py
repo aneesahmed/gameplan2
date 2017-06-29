@@ -3,8 +3,8 @@ from django.conf.urls import url
 from scrum.views.portfolioView import *
 from scrum.views.portfolioView import PortfolioList, PortfolioDetails, PortfolioCreate, PortfolioUpdate, PortfolioDelete
 from scrum.views.releaseView import ReleaseList, ReleaseCreate, ReleaseDetails, ReleaseDelete, ReleaseUpdate
-from scrum.views.releaseView import UserstoryCreate, UserstoryUpdate, UserstoryDelete
-from scrum.views.releaseView import SprintCreate, SprintUpdate, SprintDelete
+from scrum.views.releaseView import UserstoryDetails, UserstoryCreate, UserstoryUpdate, UserstoryDelete
+from scrum.views.releaseView import SprintDetails, SprintCreate, SprintUpdate, SprintDelete
 app_name = 'scrum'
 urlpatterns = [
     url(r'^$',  PortfolioList.as_view(), name='index'),
@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^release/delete/(?P<pk>\d+)$', ReleaseDelete.as_view(), name='release-delete'),
     # Userstory, userstory
     #url(r'^releaseList', ReleaseList.as_view(), name='releaseList'),
-    #url(r'^Userstory/(?P<pk>\d+)$', UserstoryDetails.as_view(), name='userstory-detail'),
+    url(r'^Userstory/(?P<pk>\d+)$', UserstoryDetails.as_view(), name='userstory-detail'),
     url(r'^Userstory/add/(?P<portfolio_id>\d+)$',UserstoryCreate.as_view(), name='userstory-add'),
     url(r'^Userstory/update/(?P<pk>\d+)$',UserstoryUpdate.as_view(), name='userstory-update'),
     url(r'^Userstory/delete/(?P<pk>\d+)$', UserstoryDelete.as_view(), name='userstory-delete'),
@@ -32,7 +32,7 @@ urlpatterns = [
     # not needed now may be later:
     # url(r'^sprintList', SprintList.as_view(), name='releaseList'),
     # not needed now may be later:
-    # url(r'^sprint/(?P<pk>\d+)$', SprintDetails.as_view(), name='release-detail'),
+    url(r'^sprint/(?P<pk>\d+)$', SprintDetails.as_view(), name='sprint-detail'),
     url(r'^sprint/add/(?P<sprint_id>\d+)$', SprintCreate.as_view(), name='sprint-add'),
     url(r'^sprint/update/(?P<pk>\d+)$', SprintUpdate.as_view(), name='sprint-update'),
     url(r'^sprint/delete/(?P<pk>\d+)$', SprintDelete.as_view(), name='sprint-delete'),

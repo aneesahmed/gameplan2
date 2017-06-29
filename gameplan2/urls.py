@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('scrum.urls')),
     url(r'users/', include('users.urls', namespace='users')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+
     #redirect after login
     #url(r'^accounts/profile/$', TemplateView.as_view(template_name='scrum/portfolio.html'), name='home'),
 ]

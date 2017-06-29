@@ -39,13 +39,22 @@
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
-                <td colspan="4" class="btn btn-info" role="button"> Unassigned User Stories </td>
+                <th> User Stories </th>
+                <th> Added into</th>
+                <th>  </th>
+                <th>  </th>
+                <th> Update Log </th>
             </tr>
         </thead>
     {% for userstory in release.userstory_set.all %}
 
         <tr>
-            <td>{{userstory.userstoryid}}{{ " - " }}{{  userstory.details }}</td>
+            <td><a href = "{% url 'scrum:userstory-detail' userstory.userstoryid %}"> {{userstory.userstoryid}}{{ " - " }}{{  userstory.details }}</a></td>
+            <td>{% if userstory.sprintid_id %}
+                    {{userstory.sprintid_id}}{{ " - " }}{{  userstory.sprintid }}
+                {% else %}
+                    {{ 'None' }}
+                {%  endif %}</td>
             <td align="center">    <a href="{% url 'scrum:userstory-update' userstory.userstoryid %}">Edit</a></td>
             <td align ="center">    <a href="{% url 'scrum:userstory-delete' userstory.userstoryid %}">delete</a></td>
             <td>created {{ userstory.createdate }} by {{ userstory.createby }} last updated {{ userstory.updatedate }} by {{ userstory.updateby }} </td>
@@ -63,7 +72,7 @@
     {% for sprint in release.sprint_set.all %}
 
         <tr>
-            <td>{{sprint.sprintid}}{{ " - " }}{{  sprint.details }}</td>
+            <td><a href = "{% url 'scrum:sprint-detail' sprint.sprintid %}"> {{sprint.sprintid}}{{ " - " }}{{  sprint.details }}</a></td>
             <td align="center">    <a href="{% url 'scrum:sprint-update' sprint.sprintid %}">Edit</a></td>
             <td align ="center">    <a href="{% url 'scrum:sprint-delete' sprint.sprintid %}">delete</a></td>
             <td>started on  {{ sprint.startdate }} by {{ sprint.createby }} last updated {{ sprint.updatedate }} by {{ sprint.updateby }} </td>
