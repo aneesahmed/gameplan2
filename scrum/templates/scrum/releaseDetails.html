@@ -66,7 +66,7 @@
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
-                <td colspan="4" class="btn btn-info" role="button"> Sprints of this Release </td>
+                <td colspan="4" class="btn btn-info" role="button"><a href = "{% url 'scrum:sprint-add' release.releaseid %}"> Add New Sprint </a></td>
             </tr>
         </thead>
     {% for sprint in release.sprint_set.all %}

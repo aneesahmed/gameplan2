@@ -1,10 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "scrum/header.html" %}
 
-</body>
-</html>
+{% block breadcrumbs %}
+    {{ block.super }}
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'scrum:portfolioList' %}">Porfolios</a></li>
+      <li><a href="{%  url 'scrum:releaseList' %}">{{ 'Release' }}</a></li>
+      <li><a href="{{ Sprint.get_absolute_url }}">{{ sprint.title }}</a></li>
+    </ul>
+{% endblock %}
+{% block sidebar %}
+<ul class="sidebar-nav">
+    {% if sprint_status %}
+        {% for status in sprint_status %}
+          <li><a href="#">{{ status.title }}</a></li>
+        {% endfor %}
+    {% endif %}
+</ul>
+
+<div>
+
+</div>
+{% endblock %}
+{% block content %}
+<div align="center" class="panel panel-primary col-lg-12" style="padding: 10px;" border="1">
+    <table class="table table-hover">
+        <tr>
+            <td class="warning">Portofolio</td><td > {{ sprint.title }}</td>
+
+            <td class="warning">Type</td><td >{{ sprint.sprinttypeid }}</td>
+        </tr>
+
+        <tr >
+            <td class="info">Owner</td><td >{{ sprint.owner }}</td>
+            <td class="info">Current Status</td><td >{{ sprint.sprintstatusid }}</td>
+        </tr>
+    </table>
+</div>
+<br />
+
+<div class="panel panel-primary col-lg-12" style="margin-left:20px;margin-top:20px" border="1">
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th> User Stories </th>
+                <th> Added into</th>
+                <th>  </th>
+                <th>  </th>
+                <th> Update Log </th>
+            </tr>
+        </thead>
+    {% for userstory in sprint.userstory_set.all %}
+
+        <tr>
+            <td><a href = "{% url 'scrum:userstory-update' userstory.userstoryid %}"> {{userstory.userstoryid}}{{ " - " }}{{  userstory.details }}</a></td>
+            <td>{% if userstory.sprintid_id %}
+                    {{userstory.sprintid_id}}{{ " - " }}{{  userstory.sprintid }}
+                {% else %}
+                    {{ 'None' }}
+                {%  endif %}</td>
+            <td align="center">    <a href="{% url 'scrum:userstory-update' userstory.userstoryid %}">Edit</a></td>
+            <td align ="center">    <a href="{% url 'scrum:userstory-delete' userstory.userstoryid %}">delete</a></td>
+            <td>created {{ userstory.createdate }} by {{ userstory.createby }} last updated {{ userstory.updatedate }} by {{ userstory.updateby }} </td>
+        </tr>
+    {% endfor %}
+   </table>
+</div>
+{% endblock %}

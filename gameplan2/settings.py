@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Third Party apps
     'bootstrap3',
+    'django_extensions',
+
     )
 
 MIDDLEWARE_CLASSES = (

@@ -68,3 +68,4 @@ class SprintForm(forms.ModelForm):
                    'createdate': forms.TextInput(attrs={'readonly': 'readonly'}),
                    'updatedate': forms.TextInput(attrs={'readonly': 'readonly'}),
                    }
+

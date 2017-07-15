@@ -1,0 +1,27 @@
+•         Brief introduction of project
+•         Major features
+•         ERD & system Architecture
+•         Screenshot of Transactional forms
+•         Any other info
+
+
+
+Breif Introduction
+----------------
+- Software Planning with Scrum Framework
+
+
+
+- Scrum Phases
+
+t
+
+	Developing Backlog, Requirement Analysis
+
+Sprint Planning
+
+Coding and Testing: Sprint Execution
+
+- Software ERD
+
+- Technolgoies uses

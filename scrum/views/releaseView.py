@@ -104,20 +104,20 @@ class SprintDetails(LoginRequiredMixin, DetailView):
     context_object_name = 'sprint'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(ReleaseDetails, self).get_context_data(*args, **kwargs)
-        context['release_status'] = ReleaseStatus.objects.all()
+        context = super(SprintDetails, self).get_context_data(*args, **kwargs)
+        #context['sprint_status'] = SprintStatus.objects.all()
         return context
 
 
-class SprintCreate(LoginRequiredMixin,CreateView):
+class SprintCreate(LoginRequiredMixin, CreateView):
     model = Sprint
     form_class =SprintForm
     #success_url = reverse('scrum:portfolio-detail')
     def form_valid(self, form):
             #form.instance.portfolioId
             form.instance.createby = self.request.user
-            form.instance.releaseid = PortfolioReleases.objects.get(pk=self.kwargs['release_id'])
-            return super(UserstoryCreate, self).form_valid(form)
+            #form.instance.releaseid = PortfolioReleases.objects.get(pk=self.kwargs['release_id'])
+            return super(SprintCreate, self).form_valid(form)
 
 class SprintUpdate(LoginRequiredMixin,UpdateView):
     model = Sprint
@@ -125,8 +125,21 @@ class SprintUpdate(LoginRequiredMixin,UpdateView):
     def form_valid(self, form):
             #form.instance.portfolioId
             form.instance.updateby = self.request.user
-            return super(UserstoryUpdate, self).form_valid(form)
+            return super(SprintUpdate, self).form_valid(form)
 
 class SprintDelete(LoginRequiredMixin,DeleteView):
     model = Sprint
     success_url = reverse_lazy('scrum:PortfolioReleasesList')
+'''
+class Sprint_userstorySelect(LoginRequiredMixin,ListView):
+    model = Userstory
+    template_name = 'scrum/userstory_multiselect.html'
+    context_object_name = 'userstory'
+    paginate_by = 20
+    # model
+    # get_object
+    # queryset
+    #def get_queryset(self):
+    #    """Return the last five published questions."""
+     #   return Userstory.objects.get(pk=1)
+'''
