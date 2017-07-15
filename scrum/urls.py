@@ -1,16 +1,16 @@
 from django.conf.urls import url
 #from . import views
 from scrum.views.portfolioView import *
-from scrum.views.portfolioView import PortfolioList, PortfolioDetails, PortfolioCreate, PortfolioUpdate, PortfolioDelete
+from scrum.views.portfolioView import PortfolioListbyStatus, PortfolioList, PortfolioDetails, PortfolioCreate, PortfolioUpdate, PortfolioDelete
 from scrum.views.releaseView import ReleaseList, ReleaseCreate, ReleaseDetails, ReleaseDelete, ReleaseUpdate
 from scrum.views.releaseView import UserstoryDetails, UserstoryCreate, UserstoryUpdate, UserstoryDelete
 from scrum.views.releaseView import SprintDetails, SprintCreate, SprintUpdate, SprintDelete
 app_name = 'scrum'
 urlpatterns = [
     url(r'^$',  PortfolioList.as_view(), name='index'),
-    url(r'^dashboard', Dashboard.as_view(), name='dashboard'),
-    url(r'^portfolioList',  PortfolioList.as_view(), name='portfolioList'),
-    url(r'^portfolioList/(?P<status_id>\d+)$',  PortfolioList.as_view(), name='portfolioList'),
+    #url(r'^dashboard', Dashboard.as_view(), name='dashboard'),
+    url(r'^portfolio/list/(?P<status_id>\d+)$',  PortfolioListbyStatus.as_view(), name='portfolioListbyStatus'),
+    url(r'^portfolio/list', PortfolioList.as_view(), name='portfolioList'),
     url(r'^portfolio/(?P<pk>\d+)$', PortfolioDetails.as_view(), name='portfolio-detail'),
     url(r'^portfolio/add', PortfolioCreate.as_view(), name='portfolio-add'),
     url(r'^portfolio/update/(?P<pk>\d+)$', PortfolioUpdate.as_view(), name='portfolio-update'),

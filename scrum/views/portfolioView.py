@@ -12,9 +12,10 @@ from django.views.generic import TemplateView
 
 class PortfolioList(LoginRequiredMixin,ListView):
     model = Portfolio
-    template_name = 'scrum/portfolio.html'
+    template_name = 'scrum/portfolio_list.html'
     context_object_name = 'portfoliolist'
     paginate_by = 20
+
     # model
     # get_object
     #queryset
@@ -23,8 +24,30 @@ class PortfolioList(LoginRequiredMixin,ListView):
     #    #return Userstory.objects.order_by('-userstoryid')[:30]
     #    #return Userstory.objects.order_by('rank')
      #   return Portfolio.objects.all().order_by('rank')
+    def get_context_data(self, *args, **kwargs):
+        context = super(PortfolioList, self).get_context_data(*args, **kwargs)
+        context['portfolio_status'] = PortfolioStatus.objects.all()
+        return context
 
+class PortfolioListbyStatus(LoginRequiredMixin, ListView):
+    model = Portfolio
+    tempelate_name = 'scrum/portfolio.html'
+    context_object_name = 'portfoliolist'
+    paginate_by = 20
 
+    def get_queryset(self):
+        status = int(self.kwargs['status_id'])
+        if (status>0):
+            return Portfolio.objects.all().filter(portfoliostatusid=status)
+        else:
+            return Portfolio.objects.all()
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(PortfolioListbyStatus, self).get_context_data(*args, **kwargs)
+        context['portfolio_status'] = PortfolioStatus.objects.all()
+        return context
+
+'''
 class Dashboard(LoginRequiredMixin, TemplateView):
         template_name = "scrum/dashboard.html"
 
@@ -33,7 +56,7 @@ class Dashboard(LoginRequiredMixin, TemplateView):
             context['latest_portfolios'] = Portfolio.objects.all()[:5]
             context['portfolio_status'] = PortfolioStatus.objects.all()
             return context
-
+'''
 class PortfolioDetails(LoginRequiredMixin,DetailView):
     model = Portfolio
     template_name = 'scrum/portfolioDetails.html'

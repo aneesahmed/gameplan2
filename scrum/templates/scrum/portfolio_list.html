@@ -9,9 +9,11 @@
 
 {% block sidebar %}
 <ul class="sidebar-nav">
-          <li><a href="#">Active</a></li>
-          <li><a href="">In progress</a></li>
-          <li><a href="">assigned</a></li>
+   {% if portfolio_status %}
+        {% for status in portfolio_status %}
+          <li><a href="{% url 'scrum:portfolioListbyStatus' status.portfoliostatusid %}">{{ status.title }}</a></li>
+        {% endfor %}
+    {% endif %}
 </ul>
 {% endblock %}
 {% block content %}
