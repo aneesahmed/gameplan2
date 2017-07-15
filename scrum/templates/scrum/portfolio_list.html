@@ -1,0 +1,71 @@
+{% extends "scrum/header.html" %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'scrum:portfolioList' %}">Porfolios</a></li>
+     </ul>
+
+{% endblock %}
+
+{% block sidebar %}
+<ul class="sidebar-nav">
+          <li><a href="#">Active</a></li>
+          <li><a href="">In progress</a></li>
+          <li><a href="">assigned</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<div class="container-fluid text-center">
+    <div class="panel col-sm-6 col-lg-12 ">
+        <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+
+            <div class="well">
+
+                <a href="{% url 'scrum:portfolio-add' %}  ">add new entry</a></div>
+
+            </div>
+        </div>
+
+      {% if portfoliolist %}
+        {% for portfolio in portfoliolist %}
+    <div class="panel col-sm-6 col-lg-3">
+        <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+
+            <ul class="list-group ">
+                <div align="right">
+                    <a href="{% url 'scrum:portfolio-detail' portfolio.portfolioid %}">Details</a>
+                </div>
+                    <li class="list-group-item list-group-item-info"><strong>Title:</strong>
+                    <span class="pull-right">{{portfolio.title}}</span>
+                </li>
+                    
+                </li>
+                <li class="list-group-item list-group-item-info"><strong>Type:</strong>
+                    <span class="pull-right">{{portfolio.portfoliotypeid}}</span>
+                </li>
+                <li class="list-group-item list-group-item-warning"><strong>Onwer:</strong>
+                    <span class="pull-right">{{portfolio.owner}}</span>
+                </li>
+                <li class="list-group-item list-group-item-danger"><strong>Project Duration:</strong>
+                    <span class="pull-right">{{totalDays}} </span>
+                </li>
+            </ul>
+              <div align="right">
+                   <span class="pull-left"><a href="{% url 'scrum:portfolio-update' portfolio.portfolioid %}">Edit</a></span>
+                     <span class="pull-right"><a href="{% url 'scrum:portfolio-delete' portfolio.portfolioid %}">Delete</a></span>
+              </div >
+        </div>
+    </div>
+
+     {% endfor %}
+    {% else %}
+      <div class="well">
+        <p>No portfolio available.</p>
+      </div>
+    {% endif %}
+ 
+
+</div>
+</body>
+</html>
+{% endblock content %}
