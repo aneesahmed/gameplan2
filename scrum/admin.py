@@ -11,6 +11,7 @@ from .models import PortfolioReleases
 from .models import Sprint
 from .models import ReleaseStatus
 from .models import  Userstory
+from .models import  TaskStatus
 
 admin.site.register(PortfolioStatus)
 admin.site.register(PortfolioType)
@@ -23,3 +24,4 @@ admin.site.register(PortfolioReleases)
 admin.site.register(ReleaseStatus)
 admin.site.register(Sprint)
 admin.site.register(Userstory)
+admin.site.register(TaskStatus)

@@ -1,7 +1,7 @@
 from django import forms
 import datetime
 from django.contrib.admin import widgets
-from .models import Portfolio , PortfolioReleases, PortfolioStatus,Userstory, Sprint
+from .models import Portfolio , PortfolioReleases, PortfolioStatus,Userstory, Sprint, Task, TaskStatus
 from django.contrib.admin.widgets import AdminDateWidget
 
 
@@ -50,6 +50,20 @@ class UserstoryForm(forms.ModelForm):
                    'updateby': forms.TextInput(attrs={'readonly': 'readonly'}),
                    'createdate': forms.TextInput(attrs={'readonly': 'readonly'}),
                    'updatedate': forms.TextInput(attrs={'readonly': 'readonly'}),
+                   }
+
+
+class TaskForm(forms.ModelForm):
+
+    class Meta:
+        model = Task
+        #fields = "__all__"
+
+        fields = ['taskid', 'details', 'userstoryid', 'resourceid', 'estmatedstart', 'estimatedduration', 'actualstart',
+                  'actualduration', 'taskstatusid']
+        widgets = {'taskid': forms.TextInput(attrs={'readonly': 'readonly'}),
+                   'details': forms.Textarea(attrs={'cols': 20, 'rows': 3}),
+                   'userstoryid': forms.TextInput(attrs={'readonly': 'readonly'}),
                    }
 
 

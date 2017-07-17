@@ -1,13 +1,13 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
-from  scrum.models import PortfolioStatus, Portfolio, PortfolioReleases, Userstory,ReleaseStatus, Sprint
+from  scrum.models import PortfolioStatus, Portfolio, PortfolioReleases, Userstory,ReleaseStatus, Sprint,Task, TaskStatus
 from django.template import loader
 from django.urls import reverse_lazy,reverse
 from django.http import Http404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
-from scrum.forms import ReleaseForm, UserstoryForm, SprintForm
+from scrum.forms import ReleaseForm, UserstoryForm, SprintForm, TaskForm
 from django import forms
 
 
@@ -68,10 +68,10 @@ class UserstoryDetails(LoginRequiredMixin, DetailView):
     template_name = 'scrum/userstoryDetails.html'
     context_object_name = 'userstory'
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(ReleaseDetails, self).get_context_data(*args, **kwargs)
-        context['release_status'] = ReleaseStatus.objects.all()
-        return context
+    #def get_context_data(self, *args, **kwargs):
+    #    context = super(ReleaseDetails, self).get_context_data(*args, **kwargs)
+    #    context['release_status'] = ReleaseStatus.objects.all()
+    #    return context
 
 class UserstoryCreate(LoginRequiredMixin,CreateView):
     model = Userstory
@@ -95,7 +95,53 @@ class UserstoryUpdate(LoginRequiredMixin,UpdateView):
 class UserstoryDelete(LoginRequiredMixin,DeleteView):
     model = Userstory
     success_url = reverse_lazy('scrum:PortfolioReleasesList')
+##############################################33
+class UserstoryCreate(LoginRequiredMixin,CreateView):
+    model = Userstory
+
+    form_class =UserstoryForm
+    #success_url = reverse_lazy('scrum:release-detail',Userstory.releaseid_id)
+    def form_valid(self, form):
+            #form.instance.portfolioId
+            form.instance.createby = self.request.user.username
+            form.instance.releaseid = PortfolioReleases.objects.get(pk=self.kwargs['release_id'])
+            return super(UserstoryCreate, self).form_valid(form)
+
+class UserstoryUpdate(LoginRequiredMixin,UpdateView):
+    model = Userstory
+    form_class = UserstoryForm
+    def form_valid(self, form):
+        #form.instance.portfolioId
+        form.instance.updateby = self.request.user.username
+        return super(UserstoryUpdate, self).form_valid(form)
+
+class UserstoryDelete(LoginRequiredMixin,DeleteView):
+    model = Userstory
+    success_url = reverse_lazy('scrum:PortfolioReleasesList')
+#######################
+class TaskCreate(LoginRequiredMixin, CreateView):
+    model = Task
+    form_class =TaskForm
+    #success_url = reverse_lazy('scrum:userstory-detail',task.userstory_id)
+    def form_valid(self, form):
+        #form.instance.portfolioId
+        #form.instance.createby = self.request.user.username
+        form.instance.userstoryid = Userstory.objects.get(pk=self.kwargs['userstory_id'])
+        return super(TaskCreate, self).form_valid(form)
+
+class TaskUpdate(LoginRequiredMixin,UpdateView):
+    model = Task
+    form_class = TaskForm
+    def form_valid(self, form):
+        #form.instance.portfolioId
+        #form.instance.userstoryid = Userstory.objects.get(pk=self.kwargs['userstory_id'])
+        return super(TaskUpdate, self).form_valid(form)
+
+class TaskDelete(LoginRequiredMixin,DeleteView):
+    model = Task
+    success_url = reverse_lazy('scrum:userstory-detail',Task.userstoryid_id)
 ##########################################33
+
 #Sprint, sprint
 
 class SprintDetails(LoginRequiredMixin, DetailView):

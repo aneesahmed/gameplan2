@@ -115,37 +115,11 @@ class ProgressRatio(models.Model):
 
 
 
-class Task(models.Model):
-    taskid = models.BigAutoField(primary_key=True)
-    userstoryid = models.ForeignKey('Userstory', models.DO_NOTHING, db_column='userStoryid', blank=True, null=True)  # Field name made lowercase.
-    resourceid = models.ForeignKey('Teamresource', models.DO_NOTHING, db_column='Resourceid', blank=True, null=True)  # Field name made lowercase.
-    estmatedstart = models.DateField(db_column='estmatedStart', blank=True, null=True)  # Field name made lowercase.
-    estimatedduration = models.IntegerField(db_column='estimatedDuration', blank=True, null=True)  # Field name made lowercase.
-    actualstart = models.DateField(db_column='actualStart', blank=True, null=True)  # Field name made lowercase.
-    actualduration = models.IntegerField(db_column='actualDuration', blank=True, null=True)  # Field name made lowercase.
-    taskstatusid = models.ForeignKey('Taskstatus', models.DO_NOTHING, db_column='taskStatusid', blank=True, null=True)  # Field name made lowercase.
-    progressratioid = models.ForeignKey(ProgressRatio, models.DO_NOTHING, db_column='progressratioid')  # Field name made lowercase.
-    nexttaskid = models.BigIntegerField(db_column='nextTaskId', blank=True, null=True)  # Field name made lowercase.
-    previoustaskid = models.BigIntegerField(db_column='previousTaskId', blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Task'
-
-
-
-class TaskStatus(models.Model):
-    taskstatusid = models.AutoField(db_column='taskStatusid', primary_key=True)  # Field name made lowercase.
-    title = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'TaskStatus'
 
 
 
 
-
+'''
 class WorkLog(models.Model):
     worklogid = models.AutoField(db_column='workLogid', primary_key=True)  # Field name made lowercase.
     starttime = models.CharField(db_column='startTime', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -175,3 +149,4 @@ class ExternalLinks(models.Model):
         managed = False
         db_table = 'externalLInks'
 
+'''

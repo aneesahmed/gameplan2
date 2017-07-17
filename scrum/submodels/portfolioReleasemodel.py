@@ -98,3 +98,34 @@ class Userstory(models.Model):
     def __str__(self):  # __unicode__ on Python 2
         return self.details
 
+
+class TaskStatus(models.Model):
+    taskstatusid = models.AutoField(db_column='taskStatusid', primary_key=True)  # Field name made lowercase.
+    title = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):  # __unicode__ on Python 2
+        return self.title
+    class Meta:
+        managed = False
+        db_table = 'TaskStatus'
+
+class Task(models.Model):
+    taskid = models.BigAutoField(primary_key=True)
+    details =models.CharField(max_length=100, blank=True, null=True)
+    userstoryid = models.ForeignKey('Userstory', models.DO_NOTHING, db_column='userStoryid', blank=True, null=True)  # Field name made lowercase.
+    resourceid =  models.CharField(max_length=100, blank=True, null=True)  # Field name made lowercase.
+    estmatedstart = models.DateField(db_column='estmatedstart', blank=True, null=True, default=date.today)  # Field name made lowercase.
+    estimatedduration = models.IntegerField(db_column='estimatedDuration', blank=True, null=True)  # Field name made lowercase.
+    actualstart = models.DateField(db_column='actualstart', blank=True, null=True, default=date.today)  # Field name made lowercase.
+    actualduration = models.IntegerField(db_column='actualDuration', blank=True, null=True)  # Field name made lowercase.
+    taskstatusid = models.ForeignKey('Taskstatus', models.DO_NOTHING, db_column='taskStatusid', blank=True, null=True)  # Field name made lowercase.
+    progressratioid = models.IntegerField(db_column='progressratioid', blank=True, null=True, default=0)    # Field name made lowercase.
+    #nexttaskid = models.BigIntegerField(db_column='nextTaskId', blank=True, null=True)  # Field name made lowercase.
+    #previoustaskid = models.BigIntegerField(db_column='previousTaskId', blank=True, null=True)  # Field name made lowercase.
+
+    def get_absolute_url(self):
+        return reverse('scrum:userstory-detail', args=[self.userstoryid_id])
+
+    class Meta:
+        managed = False
+        db_table = 'Task'

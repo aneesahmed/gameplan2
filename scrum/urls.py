@@ -4,6 +4,7 @@ from scrum.views.portfolioView import *
 from scrum.views.portfolioView import PortfolioListbyStatus, PortfolioList, PortfolioDetails, PortfolioCreate, PortfolioUpdate, PortfolioDelete
 from scrum.views.releaseView import ReleaseList, ReleaseCreate, ReleaseDetails, ReleaseDelete, ReleaseUpdate
 from scrum.views.releaseView import UserstoryDetails, UserstoryCreate, UserstoryUpdate, UserstoryDelete
+from scrum.views.releaseView import TaskCreate, TaskUpdate, TaskDelete
 from scrum.views.releaseView import SprintDetails, SprintCreate, SprintUpdate, SprintDelete
 app_name = 'scrum'
 urlpatterns = [
@@ -28,6 +29,11 @@ urlpatterns = [
     url(r'^Userstory/update/(?P<pk>\d+)$',UserstoryUpdate.as_view(), name='userstory-update'),
     url(r'^Userstory/delete/(?P<pk>\d+)$', UserstoryDelete.as_view(), name='userstory-delete'),
 
+    # Task, task
+    #url(r'^Task/(?P<pk>\d+)$', TaskDetails.as_view(), name='userstory-detail'),
+    url(r'^Task/add/(?P<userstory_id>\d+)$', TaskCreate.as_view(), name='task-add'),
+    url(r'^Task/update/(?P<pk>\d+)$', TaskUpdate.as_view(), name='task-update'),
+    url(r'^Task/delete/(?P<pk>\d+)$', TaskDelete.as_view(), name='task-delete'),
     # Sprint, sprint
     # release Release
     # not needed now may be later:

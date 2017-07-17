@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "scrum/header.html" %}
 
-</body>
-</html>
+{% block breadcrumbs %}
+    {{ block.super }}
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'scrum:portfolioList' %}">Porfolios</a></li>
+      <li><a href="{%  url 'scrum:releaseList' %}">{{ 'Release' }}</a></li>
+      <li><a href="{{ userstory.get_absolute_url }}">{{ userstory.title }}</a></li>
+    </ul>
+{% endblock %}
+{% block sidebar %}
+
+<div>
+
+</div>
+{% endblock %}
+{% block content %}
+<div align="center" class="panel panel-primary col-lg-12" style="padding: 10px;" border="1">
+    <table class="table table-hover">
+        <tr>
+            <td class="warning">User Story </td><td > {{ userstory.title }}</td>
+
+            <td class="warning">Sprint</td><td >{{ userstory.sprintid}}</td>
+        </tr>
+
+        <tr >
+            <td class="info">Owner</td><td >{{ userstory.createby }}</td>
+            <td class="info">Current Status</td><td >{{ userstory.userstorystatusid }}</td>
+        </tr>
+    </table>
+</div>
+<br />
+
+<div class="panel panel-primary col-lg-12" style="margin-left:20px;margin-top:20px" border="1">
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <td colspan="5" class="btn btn-info" role="button"><a href = "{% url 'scrum:task-add' userstory.userstoryid %}"> Add New Task </a></td>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th> Task  </th>
+                <th> Estimated Start</th>
+                <th> Actual Start </th>
+                <th> Estimated Duration </th>
+                <th> Actual Duration </th>
+            </tr>
+        </thead>
+    {% for task in userstory.task_set.all %}
+
+        <tr>
+            <td><a href = "{% url 'scrum:task-update' task.taskid %}"> {{task.taskid}}{{ " - " }}{{  task.details }}</a></td>
+             <td align="center">    <a href="{% url 'scrum:task-update' task.taskid %}">Edit</a></td>
+            <td align ="center">    <a href="{% url 'scrum:task-delete' task.taskid %}">delete</a></td>
+            <td>est. Start {{ task.estmatedstart }} actual {{ task.actualstart }} assigned to {{ task.resourceid }} </td>
+        </tr>
+    {% endfor %}
+   </table>
+</div>
+{% endblock %}
