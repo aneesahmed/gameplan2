@@ -6,6 +6,8 @@ from scrum.views.releaseView import ReleaseList, ReleaseCreate, ReleaseDetails, 
 from scrum.views.releaseView import UserstoryDetails, UserstoryCreate, UserstoryUpdate, UserstoryDelete
 from scrum.views.releaseView import TaskCreate, TaskUpdate, TaskDelete
 from scrum.views.releaseView import SprintDetails, SprintCreate, SprintUpdate, SprintDelete
+from scrum.views.teamview import TeamList, TeamCreate, TeamUpdate, TeamDetails, TeamDelete
+from scrum.views.teamview import TeamResourceCreate, TeamResourceUpdate, TeamResourceDelete
 app_name = 'scrum'
 urlpatterns = [
     url(r'^$',  PortfolioList.as_view(), name='index'),
@@ -56,4 +58,15 @@ urlpatterns = [
     #url(r'^sprint/new$', views.new_sprint, name='new_sprint'),
     #url(r'^task/new$', views.new_task, name='new_task'),
     #url(r'^team/new$', views.new_team, name='new_release'),
+
+    # Team, team
+    url(r'^team/list', TeamList.as_view(), name='team-list'),
+    url(r'^team/(?P<pk>\d+)$', TeamDetails.as_view(), name='team-detail'),
+    url(r'^team/add', TeamCreate.as_view(), name='team-add'),
+    url(r'^team/update/(?P<pk>\d+)$', TeamUpdate.as_view(), name='team-update'),
+    url(r'^team/delete/(?P<pk>\d+)$', TeamDelete.as_view(), name='team-delete'),
+    url(r'^teamresource/add', TeamResourceCreate.as_view(), name='teamresource-add'),
+    url(r'^teamresource/update/(?P<pk>[\w\-]+)$', TeamResourceUpdate.as_view(), name='teamresource-update'),
+    url(r'^teamresource/delete/(?P<pk>[\w\-]+)$', TeamResourceDelete.as_view(), name='teamresource-delete'),
 ]
+
