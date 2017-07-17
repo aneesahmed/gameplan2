@@ -1,0 +1,45 @@
+{% extends "scrum/header.html" %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'scrum:portfolioList' %}">Porfolios</a></li>
+     </ul>
+
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div class="container-fluid text-center">
+    <div class="panel col-sm-6 col-lg-12 ">
+        <div class="panel-body" style="background-color:#{{statusColor}};color:#FFFFFF">
+
+            <div class="well">
+
+                <a href="{% url 'scrum:team-add'  %}  ">add new entry</a></div>
+
+            </div>
+        </div>
+
+      {% if teamlist %}
+      <table class="table table-striped table-bordered table-condensed">
+        {% for team in teamlist %}
+       <tr>
+            <td><a href = "{% url 'scrum:team-detail' team.teamid %}"> {{team.teamid}}{{ " - " }}{{  team.title }}</a></td>
+            <td align="center">    <a href="{% url 'scrum:team-update' team.teamid %}" class="btn btn-info" role="button">Edit</a></td>
+            <td align ="center">    <a href="{% url 'scrum:team-delete' team.teamid %}" class="btn btn-info" role="button">delete</a></td>
+
+        </tr>
+     {% endfor %}
+      </table>
+      {% else %}
+      <div class="well">
+        <p>No team available.</p>
+      </div>
+    {% endif %}
+ 
+
+</div>
+</body>
+</html>
+{% endblock content %}
