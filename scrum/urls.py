@@ -24,7 +24,7 @@ urlpatterns = [
     # Userstory, userstory
     #url(r'^releaseList', ReleaseList.as_view(), name='releaseList'),
     url(r'^Userstory/(?P<pk>\d+)$', UserstoryDetails.as_view(), name='userstory-detail'),
-    url(r'^Userstory/add/(?P<portfolio_id>\d+)$',UserstoryCreate.as_view(), name='userstory-add'),
+    url(r'^Userstory/add/(?P<release_id>\d+)$',UserstoryCreate.as_view(), name='userstory-add'),
     url(r'^Userstory/update/(?P<pk>\d+)$',UserstoryUpdate.as_view(), name='userstory-update'),
     url(r'^Userstory/delete/(?P<pk>\d+)$', UserstoryDelete.as_view(), name='userstory-delete'),
 

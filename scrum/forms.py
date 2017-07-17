@@ -43,8 +43,9 @@ class UserstoryForm(forms.ModelForm):
         model = Userstory
         #fields = "__all__"
 
-        fields = [ 'details', 'sprintid','createby','createdate','updateby','updatedate']
-        widgets = {'details': forms.Textarea(attrs={'cols': 20,'rows':3}),
+        fields = [ 'releaseid', 'details', 'sprintid','createby','createdate','updateby','updatedate']
+        widgets = {'releaseid':forms.TextInput(attrs={'readonly':'readonly'}),
+                    'details': forms.Textarea(attrs={'cols': 20,'rows':3}),
                    'createby':forms.TextInput(attrs={'readonly':'readonly'}),
                    'updateby': forms.TextInput(attrs={'readonly': 'readonly'}),
                    'createdate': forms.TextInput(attrs={'readonly': 'readonly'}),
@@ -58,8 +59,9 @@ class SprintForm(forms.ModelForm):
         model = Sprint
         #fields = "__all__"
 
-        fields = [ 'sprintid','details','releaseId','enddate','startdate', 'createby','createdate','updateby','updatedate']
-        widgets = {'details': forms.Textarea(attrs={'cols': 20,'rows':3}),
+        fields = [ 'sprintid','details','releaseid','startdate', 'enddate','createby','createdate','updateby','updatedate']
+        widgets = {'releaseid':forms.TextInput(attrs={'readonly':'readonly'}),
+                   'details': forms.Textarea(attrs={'cols': 20,'rows':3}),
                    'startdate': forms.SelectDateWidget,
                    'enddate': forms.SelectDateWidget,
                    'sprintid': forms.TextInput(attrs={'readonly':'readonly'}),

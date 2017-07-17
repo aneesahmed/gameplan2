@@ -77,7 +77,7 @@ class UserstoryCreate(LoginRequiredMixin,CreateView):
     model = Userstory
 
     form_class =UserstoryForm
-    #success_url = reverse('scrum:portfolio-detail')
+    #success_url = reverse_lazy('scrum:release-detail',Userstory.releaseid_id)
     def form_valid(self, form):
             #form.instance.portfolioId
             form.instance.createby = self.request.user.username
@@ -116,7 +116,7 @@ class SprintCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
             #form.instance.portfolioId
             form.instance.createby = self.request.user
-            #form.instance.releaseid = PortfolioReleases.objects.get(pk=self.kwargs['release_id'])
+            form.instance.releaseid = PortfolioReleases.objects.get(pk=self.kwargs['release_id'])
             return super(SprintCreate, self).form_valid(form)
 
 class SprintUpdate(LoginRequiredMixin,UpdateView):

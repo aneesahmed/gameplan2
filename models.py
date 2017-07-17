@@ -189,7 +189,7 @@ class Portfoliolinks(models.Model):
 
 class Portfolioreleases(models.Model):
     portfolioid = models.IntegerField()
-    releaseid = models.AutoField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
+    releaseid = models.AutoField(db_column='releaseid', primary_key=True)  # Field name made lowercase.
     planstartdate = models.DateField(db_column='planStartDate', blank=True, null=True)  # Field name made lowercase.
     actualstartdate = models.DateField(db_column='actualStartDate', blank=True, null=True)  # Field name made lowercase.
     teamid = models.ForeignKey('Team', models.DO_NOTHING, db_column='teamid')
@@ -321,7 +321,7 @@ class Userstory(models.Model):
     resourceid = models.IntegerField()
     resourceid1 = models.ForeignKey(Resource, models.DO_NOTHING, db_column='resourceid1')
     sprintid = models.ForeignKey(Sprint, models.DO_NOTHING, db_column='sprintid')
-    releaseid = models.ForeignKey(Portfolioreleases, models.DO_NOTHING, db_column='releaseId')  # Field name made lowercase.
+    releaseid = models.ForeignKey(Portfolioreleases, models.DO_NOTHING, db_column='releaseid')  # Field name made lowercase.
 
     class Meta:
         managed = False

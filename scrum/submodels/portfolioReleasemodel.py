@@ -31,7 +31,7 @@ class ReleaseStatus(models.Model):
 
 class PortfolioReleases(models.Model):
     portfolioid = models.ForeignKey(Portfolio, models.DO_NOTHING, db_column='portfolioid')
-    releaseid = models.AutoField(db_column='releaseId', primary_key=True)  # Field name made lowercase.
+    releaseid = models.AutoField(db_column='releaseid', primary_key=True)  # Field name made lowercase.
     planstartdate = models.DateField(db_column='planStartDate', blank=True, null=True)  # Field name made lowercase.
     actualstartdate = models.DateField(db_column='actualStartDate', blank=True, null=True)  # Field name made lowercase.
     teamid = models.ForeignKey(Team, models.DO_NOTHING, db_column='teamid')
@@ -50,7 +50,7 @@ class PortfolioReleases(models.Model):
 
         #return reverse('releaseList')
     def __str__(self):
-        return self.details
+        return str(self.portfolioid ) + ':' +     str(self.releaseid)
 
     class Meta:
         managed = False
@@ -61,15 +61,17 @@ class Sprint(models.Model):
     details = models.CharField(max_length=100, blank=True, null=True)
     startdate = models.DateField(db_column='startDate', blank=True, null=True)  # Field name made lowercase.
     enddate = models.DateField(db_column='End', blank=True, null=True)  # Field name made lowercase.
-    releaseId = models.ForeignKey(PortfolioReleases, models.DO_NOTHING, db_column='releaseid')
-    createby = models.CharField(max_length=100)
+    releaseid = models.ForeignKey(PortfolioReleases, models.DO_NOTHING, db_column='releaseid', default=1)
+    createby = models.CharField(max_length=100, blank=True, null=True)
     createdate = models.DateField(db_column='createDate', blank=True, null=True, default=date.today)  # Field name made lowercase.
-    updateby = models.CharField(max_length=100)
+    updateby = models.CharField(max_length=100, blank=True, null=True)
     updatedate = models.DateField(db_column='updatedate', blank=True, null=True, default=date.today)  # Field name made lowercase.
 
+    def get_absolute_url(self):
+        return reverse('scrum:release-detail', args=[self.releaseid_id])
 
     def __str__(self):
-        return self.details
+        return str(self.releaseid) + ':' + str(self.sprintid) + ':' + self.details
 
     class Meta:
         managed = False
@@ -79,14 +81,14 @@ class Userstory(models.Model):
     userstoryid = models.AutoField(db_column='userstoryid', primary_key=True)  # Field name made lowercase.
     details = models.CharField(max_length=100, blank=True, null=True)
     sprintid = models.ForeignKey(Sprint, models.DO_NOTHING, db_column='sprintid',blank=True, null=True)
-    releaseId = models.ForeignKey(PortfolioReleases, models.DO_NOTHING, db_column='releaseid')
-    createby = models.CharField(max_length=100)
+    releaseid = models.ForeignKey(PortfolioReleases, models.DO_NOTHING, db_column='releaseid', default=1)
+    createby = models.CharField(max_length=100, blank=True, null=True)
     createdate = models.DateField(db_column='createDate', blank=True, null=True, default=date.today)  # Field name made lowercase.
-    updateby = models.CharField(max_length=100)
+    updateby = models.CharField(max_length=100, blank=True, null=True)
     updatedate = models.DateField(db_column='updatedate', blank=True, null=True, default=date.today)  # Field name made lowercase.
 
     def get_absolute_url(self):
-        return reverse('scrum:release-detail', args=[self.releaseId_id])
+        return reverse('scrum:release-detail', args=[self.releaseid_id])
 
     class Meta:
         managed = False
