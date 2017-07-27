@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bde5164-0273-4be2-be68-23f7134913e3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scrum/templates/scrum/team_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/presentation/project report.docx" afterPath="$PROJECT_DIR$/presentation/project report.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrum/templates/scrum/header.html" afterPath="$PROJECT_DIR$/scrum/templates/scrum/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrum/templates/scrum/sprintDetails.html" afterPath="$PROJECT_DIR$/scrum/templates/scrum/sprintDetails.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrum/views/portfolioView.py" afterPath="$PROJECT_DIR$/scrum/views/portfolioView.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,20 +48,8 @@
       <file leaf-file-name="portfoliomodel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrum/submodels/portfoliomodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2495">
+            <state relative-caret-position="2592">
               <caret line="151" column="3" lean-forward="false" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="3" />
-              <folding>
-                <element signature="e#483#522#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="portfolioReleasemodel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrum/submodels/portfolioReleasemodel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="130" column="25" lean-forward="false" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -69,12 +58,21 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrum/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="69" column="34" lean-forward="false" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+            <state relative-caret-position="270">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
-                <marker date="1500293582475" expanded="true" signature="3031:3618" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="portfolio_list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/portfolio_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,28 +80,21 @@
       <file leaf-file-name="releaseView.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrum/views/releaseView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="142" column="9" lean-forward="false" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
+            <state relative-caret-position="-216">
+              <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
-                <marker date="1500293582475" expanded="true" signature="6633:6780" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="6832:7067" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="6911:7067" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="7119:7200" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="7201:7577" ph="'''...'''" />
+                <marker date="1500299141855" expanded="true" signature="6633:6780" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrum/admin.py">
+      <file leaf-file-name="task_form.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/task_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="216">
+              <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,11 +102,9 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrum/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="62" column="58" lean-forward="false" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="146">
+              <caret line="28" column="86" lean-forward="false" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,46 +119,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/header.html">
+      <file leaf-file-name="portfolioView.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrum/views/portfolioView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="87" column="35" lean-forward="false" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+            <state relative-caret-position="54">
+              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="team_list.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sprintDetails.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/sprintDetails.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="54" column="57" lean-forward="false" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="team_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/team_list.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+              <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="releaseDetails.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/releaseDetails.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="46" column="16" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <marker date="1500293582475" expanded="true" signature="1539:1987" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="1781:1970" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="1993:2853" ph="{% for userstory in release.userstory_set.all ... %}" />
-                <marker date="1500293582475" expanded="true" signature="2054:2835" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="2227:2433" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="2228:2429" ph="{% if userstory.sprintid_id ... %}" />
-                <marker date="1500293582475" expanded="false" signature="2922:2954" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="2966:3867" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="3037:3860" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="3053:3257" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="3070:3240" ph="..." />
-                <marker date="1500293582475" expanded="true" signature="3263:3849" ph="{% for sprint in release.sprint_set.all ... %}" />
-                <marker date="1500293582475" expanded="true" signature="3318:3831" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -186,7 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>userStory</find>
       <find>releaseid</find>
       <find>Boot</find>
       <find>PortfolioReleases</find>
@@ -216,6 +190,7 @@
       <find>releaseId</find>
       <find>sprint</find>
       <find>Team</find>
+      <find>login</find>
     </findStrings>
     <replaceStrings>
       <replace>scrum</replace>
@@ -266,10 +241,8 @@
         <option value="$PROJECT_DIR$/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/gameplan2/settings.py" />
         <option value="$PROJECT_DIR$/templates/registration/logout.html" />
-        <option value="$PROJECT_DIR$/scrum/templates/scrum/sprintDetails.html" />
         <option value="$PROJECT_DIR$/scrum/templates/scrum/sprint_form.html" />
         <option value="$PROJECT_DIR$/scrum/templates/scrum/portfolio_list.html" />
-        <option value="$PROJECT_DIR$/scrum/views/portfolioView.py" />
         <option value="$PROJECT_DIR$/scrum/templates/scrum/releaseDetails.html" />
         <option value="$PROJECT_DIR$/scrum/templates/scrum/userstory_form.html" />
         <option value="$PROJECT_DIR$/models.py" />
@@ -283,8 +256,10 @@
         <option value="$PROJECT_DIR$/scrum/views/teamview.py" />
         <option value="$PROJECT_DIR$/gameplan2/views.py" />
         <option value="$PROJECT_DIR$/scrum/urls.py" />
-        <option value="$PROJECT_DIR$/scrum/templates/scrum/header.html" />
         <option value="$PROJECT_DIR$/scrum/templates/scrum/team_list.html" />
+        <option value="$PROJECT_DIR$/scrum/templates/scrum/header.html" />
+        <option value="$PROJECT_DIR$/scrum/templates/scrum/sprintDetails.html" />
+        <option value="$PROJECT_DIR$/scrum/views/portfolioView.py" />
       </list>
     </option>
   </component>
@@ -295,10 +270,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="48" />
-    <option name="y" value="-17" />
-    <option name="width" value="1319" />
-    <option name="height" value="786" />
+    <option name="x" value="49" />
+    <option name="y" value="-3" />
+    <option name="width" value="1317" />
+    <option name="height" value="771" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -318,7 +293,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -417,22 +391,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gameplan2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gameplan2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gameplan2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -753,19 +714,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="-17" width="1319" height="786" extended-state="6" />
+    <frame x="49" y="-3" width="1317" height="771" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19058824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5027451" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.4972549" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1882353" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3987441" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -782,8 +742,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24941176" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18588236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1011,7 +971,7 @@
         <state relative-caret-position="216">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1060,24 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/portfolio_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/views/portfolioView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="44" lean-forward="false" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#49#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/userstory_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -1103,32 +1045,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/sprintDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="67" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/releaseDetails.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
+        <state relative-caret-position="1080">
           <caret line="46" column="16" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <marker date="1500293582475" expanded="true" signature="1539:1987" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="1781:1970" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="1993:2853" ph="{% for userstory in release.userstory_set.all ... %}" />
-            <marker date="1500293582475" expanded="true" signature="2054:2835" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="2227:2433" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="2228:2429" ph="{% if userstory.sprintid_id ... %}" />
-            <marker date="1500293582475" expanded="false" signature="2922:2954" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="2966:3867" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="3037:3860" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="3053:3257" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="3070:3240" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="3263:3849" ph="{% for sprint in release.sprint_set.all ... %}" />
-            <marker date="1500293582475" expanded="true" signature="3318:3831" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="1539:1987" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="1781:1970" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="1993:2853" ph="{% for userstory in release.userstory_set.all ... %}" />
+            <marker date="1500299141783" expanded="true" signature="2054:2835" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="2227:2433" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="2228:2429" ph="{% if userstory.sprintid_id ... %}" />
+            <marker date="1500299141783" expanded="false" signature="2922:2954" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="2966:3867" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="3037:3860" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="3053:3257" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="3070:3240" ph="..." />
+            <marker date="1500299141783" expanded="true" signature="3263:3849" ph="{% for sprint in release.sprint_set.all ... %}" />
+            <marker date="1500299141783" expanded="true" signature="3318:3831" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1141,75 +1075,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/task_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="69" column="34" lean-forward="false" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <marker date="1500293582475" expanded="true" signature="3031:3618" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/submodels/portfoliomodel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2495">
-          <caret line="151" column="3" lean-forward="false" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="3" />
-          <folding>
-            <element signature="e#483#522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/userstoryDetails.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="49" column="33" lean-forward="true" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
           <folding>
-            <element signature="e#1022#1062#0#HTML" expanded="true" />
+            <element signature="e#1022#1062#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrum/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
+        <state relative-caret-position="405">
           <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrum/submodels/portfolioReleasemodel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
+        <state relative-caret-position="3402">
           <caret line="130" column="25" lean-forward="false" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/views/releaseView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="142" column="9" lean-forward="false" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <marker date="1500293582475" expanded="true" signature="6633:6780" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="6832:7067" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="6911:7067" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="7119:7200" ph="..." />
-            <marker date="1500293582475" expanded="true" signature="7201:7577" ph="'''...'''" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1218,8 +1108,50 @@
         <state relative-caret-position="1361">
           <caret line="101" column="49" lean-forward="false" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="49" />
           <folding>
-            <element signature="e#15#64#0" expanded="true" />
+            <element signature="e#15#64#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="97" column="20" lean-forward="true" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
+          <folding>
+            <marker date="1500299154943" expanded="false" signature="4358:4381" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/team_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="28" column="86" lean-forward="false" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/sprintDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="54" column="57" lean-forward="false" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/submodels/portfoliomodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2592">
+          <caret line="151" column="3" lean-forward="false" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1231,28 +1163,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/urls.py">
+    <entry file="file://$PROJECT_DIR$/scrum/views/portfolioView.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="62" column="58" lean-forward="false" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="87" column="35" lean-forward="false" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+        <state relative-caret-position="54">
+          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/team_list.html">
+    <entry file="file://$PROJECT_DIR$/scrum/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        <state relative-caret-position="270">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/portfolio_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/views/releaseView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <marker date="1500299141855" expanded="true" signature="6633:6780" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrum/templates/scrum/task_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
           <folding />
         </state>
       </provider>

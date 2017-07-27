@@ -10,7 +10,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.views.generic import TemplateView
 
 
-class PortfolioList(LoginRequiredMixin,ListView):
+class PortfolioList(LoginRequiredMixin, ListView):
     model = Portfolio
     template_name = 'scrum/portfolio_list.html'
     context_object_name = 'portfoliolist'

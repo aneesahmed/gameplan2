@@ -52,7 +52,7 @@
     {% for userstory in sprint.userstory_set.all %}
 
         <tr>
-            <td><a href = "{% url 'scrum:userstory-update' userstory.userstoryid %}"> {{userstory.userstoryid}}{{ " - " }}{{  userstory.details }}</a></td>
+            <td><a href = "{% url 'scrum:userstory-detail' userstory.userstoryid %}"> {{userstory.userstoryid}}{{ " - " }}{{  userstory.details }}</a></td>
             <td>{% if userstory.sprintid_id %}
                     {{userstory.sprintid_id}}{{ " - " }}{{  userstory.sprintid }}
                 {% else %}
